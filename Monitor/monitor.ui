@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1068</width>
-    <height>681</height>
+    <width>1064</width>
+    <height>671</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -195,24 +195,28 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1068</width>
-     <height>23</height>
+     <width>1064</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
     <property name="title">
      <string>文件</string>
     </property>
+    <addaction name="action"/>
+    <addaction name="action_2"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>操作</string>
     </property>
+    <addaction name="action_4"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
      <string>帮助</string>
     </property>
+    <addaction name="action_3"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -223,6 +227,26 @@
     <bool>true</bool>
    </property>
   </widget>
+  <action name="action">
+   <property name="text">
+    <string>导入数据</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>导出数据</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>生成截图</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

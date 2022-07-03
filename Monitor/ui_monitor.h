@@ -35,6 +35,10 @@ QT_BEGIN_NAMESPACE
 class Ui_Monitor
 {
 public:
+    QAction *action;
+    QAction *action_2;
+    QAction *action_3;
+    QAction *action_4;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *mainLayout;
@@ -76,7 +80,15 @@ public:
     {
         if (Monitor->objectName().isEmpty())
             Monitor->setObjectName(QString::fromUtf8("Monitor"));
-        Monitor->resize(1068, 681);
+        Monitor->resize(1064, 671);
+        action = new QAction(Monitor);
+        action->setObjectName(QString::fromUtf8("action"));
+        action_2 = new QAction(Monitor);
+        action_2->setObjectName(QString::fromUtf8("action_2"));
+        action_3 = new QAction(Monitor);
+        action_3->setObjectName(QString::fromUtf8("action_3"));
+        action_4 = new QAction(Monitor);
+        action_4->setObjectName(QString::fromUtf8("action_4"));
         centralwidget = new QWidget(Monitor);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout_5 = new QVBoxLayout(centralwidget);
@@ -233,7 +245,7 @@ public:
         Monitor->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Monitor);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1068, 23));
+        menubar->setGeometry(QRect(0, 0, 1064, 26));
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         menu_2 = new QMenu(menubar);
@@ -249,6 +261,10 @@ public:
         menubar->addAction(menu->menuAction());
         menubar->addAction(menu_2->menuAction());
         menubar->addAction(menu_3->menuAction());
+        menu->addAction(action);
+        menu->addAction(action_2);
+        menu_2->addAction(action_4);
+        menu_3->addAction(action_3);
 
         retranslateUi(Monitor);
 
@@ -261,6 +277,10 @@ public:
     void retranslateUi(QMainWindow *Monitor)
     {
         Monitor->setWindowTitle(QCoreApplication::translate("Monitor", "MainWindow", nullptr));
+        action->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\205\245\346\225\260\346\215\256", nullptr));
+        action_2->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\207\272\346\225\260\346\215\256", nullptr));
+        action_3->setText(QCoreApplication::translate("Monitor", "\345\205\263\344\272\216", nullptr));
+        action_4->setText(QCoreApplication::translate("Monitor", "\347\224\237\346\210\220\346\210\252\345\233\276", nullptr));
         label_9->setText(QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\235\245\346\272\220", nullptr));
         label_10->setText(QCoreApplication::translate("Monitor", "COM\345\217\243", nullptr));
         label_11->setText(QCoreApplication::translate("Monitor", "\346\263\242\347\211\271\347\216\207", nullptr));
