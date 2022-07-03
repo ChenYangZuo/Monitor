@@ -1,0 +1,5 @@
+C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/CMakeFiles/Monitor.dir
+C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/CMakeFiles/Monitor_autogen_timestamp_deps.dir
+C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/CMakeFiles/Monitor_autogen.dir

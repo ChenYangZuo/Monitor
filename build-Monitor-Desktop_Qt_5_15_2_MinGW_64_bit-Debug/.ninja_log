@@ -1,0 +1,24 @@
+# ninja log v5
+4	184	6785400436067409	Monitor_autogen/timestamp	368b9a3494cd5325
+4	184	6785400436067409	C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/timestamp	368b9a3494cd5325
+4	184	6785400436067409	Monitor_autogen/mocs_compilation.cpp	368b9a3494cd5325
+432	1496	6785400073656325	CMakeFiles/Monitor.dir/main.cpp.obj	44faa8c909e75f62
+4	184	6785400436067409	C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/mocs_compilation.cpp	368b9a3494cd5325
+439	1572	6785400074424022	CMakeFiles/Monitor.dir/Monitor_autogen/mocs_compilation.cpp.obj	49a625a888c1776e
+1	283	6785400446898582	build.ninja	82730f102d9ab70
+3	207	6785403838515671	Monitor_autogen/timestamp	368b9a3494cd5325
+3	207	6785403838515671	Monitor_autogen/mocs_compilation.cpp	368b9a3494cd5325
+3	207	6785403838515671	C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/timestamp	368b9a3494cd5325
+3	207	6785403838515671	C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/mocs_compilation.cpp	368b9a3494cd5325
+4	209	6785404192295647	Monitor_autogen/timestamp	368b9a3494cd5325
+4	209	6785404192295647	Monitor_autogen/mocs_compilation.cpp	368b9a3494cd5325
+4	209	6785404192295647	C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/timestamp	368b9a3494cd5325
+4	209	6785404192295647	C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/mocs_compilation.cpp	368b9a3494cd5325
+4	1056	6785405451283439	CMakeFiles/Monitor.dir/monitor.cpp.obj	33347fca5d801cb5
+1056	1206	6785405452787248	Monitor.exe	644b536b5f0297ac
+4	216	6785408752838175	Monitor_autogen/timestamp	368b9a3494cd5325
+4	216	6785408752838175	Monitor_autogen/mocs_compilation.cpp	368b9a3494cd5325
+4	216	6785408752838175	C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/timestamp	368b9a3494cd5325
+4	216	6785408752838175	C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/mocs_compilation.cpp	368b9a3494cd5325
+218	1411	6785408764780953	CMakeFiles/Monitor.dir/monitor.cpp.obj	33347fca5d801cb5
+1411	1545	6785408766095893	Monitor.exe	644b536b5f0297ac
