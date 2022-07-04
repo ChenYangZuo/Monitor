@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -23,12 +22,14 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+//#include "QtCharts.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -37,7 +38,7 @@ class Ui_Monitor
 public:
     QAction *action;
     QAction *action_2;
-    QAction *action_3;
+    QAction *AboutMenu;
     QAction *action_4;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_5;
@@ -45,22 +46,27 @@ public:
     QHBoxLayout *topLayout;
     QTabWidget *tabWidget;
     QWidget *SourceTab;
-    QVBoxLayout *verticalLayout_10;
-    QVBoxLayout *verticalLayout_9;
+    QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_11;
-    QLabel *label_9;
+    QLabel *DataSourceLabel;
     QComboBox *DataSourceList;
     QHBoxLayout *horizontalLayout_12;
-    QLabel *label_10;
+    QLabel *COMLabel;
     QComboBox *COMList;
     QHBoxLayout *horizontalLayout_13;
-    QLabel *label_11;
+    QLabel *BaudrateLabel;
     QComboBox *BaudrateList;
     QHBoxLayout *horizontalLayout_14;
-    QLabel *label_12;
-    QLineEdit *SourceDetail;
-    QPushButton *ConnectButton;
+    QLabel *SourceDetailLabel;
+    QTextBrowser *SourceDetail;
+    QHBoxLayout *horizontalLayout_16;
+    QLabel *IPAddressLabel;
+    QLineEdit *IPAddressEdit;
+    QHBoxLayout *horizontalLayout_17;
+    QLabel *PortLabel;
+    QSpinBox *PortEdit;
     QSpacerItem *verticalSpacer_3;
+    QPushButton *ConnectButton;
     QWidget *ObserverTab;
     QVBoxLayout *verticalLayout_8;
     QListView *ObservedList;
@@ -68,7 +74,7 @@ public:
     QToolButton *AddButton;
     QToolButton *DeleteButton;
     QSpacerItem *horizontalSpacer;
-    QGraphicsView *Chart;
+    QChartView *Chart;
     QTextBrowser *RawData;
     QMenuBar *menubar;
     QMenu *menu;
@@ -85,8 +91,8 @@ public:
         action->setObjectName(QString::fromUtf8("action"));
         action_2 = new QAction(Monitor);
         action_2->setObjectName(QString::fromUtf8("action_2"));
-        action_3 = new QAction(Monitor);
-        action_3->setObjectName(QString::fromUtf8("action_3"));
+        AboutMenu = new QAction(Monitor);
+        AboutMenu->setObjectName(QString::fromUtf8("AboutMenu"));
         action_4 = new QAction(Monitor);
         action_4->setObjectName(QString::fromUtf8("action_4"));
         centralwidget = new QWidget(Monitor);
@@ -103,89 +109,137 @@ public:
         tabWidget->setMaximumSize(QSize(300, 16777215));
         SourceTab = new QWidget();
         SourceTab->setObjectName(QString::fromUtf8("SourceTab"));
-        verticalLayout_10 = new QVBoxLayout(SourceTab);
-        verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
-        verticalLayout_9 = new QVBoxLayout();
-        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
+        verticalLayout = new QVBoxLayout(SourceTab);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
-        label_9 = new QLabel(SourceTab);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
+        DataSourceLabel = new QLabel(SourceTab);
+        DataSourceLabel->setObjectName(QString::fromUtf8("DataSourceLabel"));
 
-        horizontalLayout_11->addWidget(label_9);
+        horizontalLayout_11->addWidget(DataSourceLabel);
 
         DataSourceList = new QComboBox(SourceTab);
         DataSourceList->setObjectName(QString::fromUtf8("DataSourceList"));
+        DataSourceList->setMinimumSize(QSize(0, 30));
+        DataSourceList->setMaximumSize(QSize(16777215, 30));
 
         horizontalLayout_11->addWidget(DataSourceList);
 
         horizontalLayout_11->setStretch(0, 1);
         horizontalLayout_11->setStretch(1, 3);
 
-        verticalLayout_9->addLayout(horizontalLayout_11);
+        verticalLayout->addLayout(horizontalLayout_11);
 
         horizontalLayout_12 = new QHBoxLayout();
         horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
-        label_10 = new QLabel(SourceTab);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
+        COMLabel = new QLabel(SourceTab);
+        COMLabel->setObjectName(QString::fromUtf8("COMLabel"));
 
-        horizontalLayout_12->addWidget(label_10);
+        horizontalLayout_12->addWidget(COMLabel);
 
         COMList = new QComboBox(SourceTab);
         COMList->setObjectName(QString::fromUtf8("COMList"));
+        COMList->setMinimumSize(QSize(0, 30));
+        COMList->setMaximumSize(QSize(16777215, 30));
 
         horizontalLayout_12->addWidget(COMList);
 
         horizontalLayout_12->setStretch(0, 1);
         horizontalLayout_12->setStretch(1, 3);
 
-        verticalLayout_9->addLayout(horizontalLayout_12);
+        verticalLayout->addLayout(horizontalLayout_12);
 
         horizontalLayout_13 = new QHBoxLayout();
         horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
-        label_11 = new QLabel(SourceTab);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
+        BaudrateLabel = new QLabel(SourceTab);
+        BaudrateLabel->setObjectName(QString::fromUtf8("BaudrateLabel"));
 
-        horizontalLayout_13->addWidget(label_11);
+        horizontalLayout_13->addWidget(BaudrateLabel);
 
         BaudrateList = new QComboBox(SourceTab);
         BaudrateList->setObjectName(QString::fromUtf8("BaudrateList"));
+        BaudrateList->setMinimumSize(QSize(0, 30));
+        BaudrateList->setMaximumSize(QSize(16777215, 30));
 
         horizontalLayout_13->addWidget(BaudrateList);
 
         horizontalLayout_13->setStretch(0, 1);
         horizontalLayout_13->setStretch(1, 3);
 
-        verticalLayout_9->addLayout(horizontalLayout_13);
+        verticalLayout->addLayout(horizontalLayout_13);
 
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
-        label_12 = new QLabel(SourceTab);
-        label_12->setObjectName(QString::fromUtf8("label_12"));
+        SourceDetailLabel = new QLabel(SourceTab);
+        SourceDetailLabel->setObjectName(QString::fromUtf8("SourceDetailLabel"));
 
-        horizontalLayout_14->addWidget(label_12);
+        horizontalLayout_14->addWidget(SourceDetailLabel);
 
-        SourceDetail = new QLineEdit(SourceTab);
+        SourceDetail = new QTextBrowser(SourceTab);
         SourceDetail->setObjectName(QString::fromUtf8("SourceDetail"));
+        SourceDetail->setMinimumSize(QSize(0, 30));
+        SourceDetail->setMaximumSize(QSize(16777215, 30));
+        SourceDetail->setContextMenuPolicy(Qt::NoContextMenu);
+        SourceDetail->setAcceptDrops(false);
+        SourceDetail->setInputMethodHints(Qt::ImhMultiLine);
+        SourceDetail->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        SourceDetail->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
         horizontalLayout_14->addWidget(SourceDetail);
 
         horizontalLayout_14->setStretch(0, 1);
         horizontalLayout_14->setStretch(1, 3);
 
-        verticalLayout_9->addLayout(horizontalLayout_14);
+        verticalLayout->addLayout(horizontalLayout_14);
 
-        ConnectButton = new QPushButton(SourceTab);
-        ConnectButton->setObjectName(QString::fromUtf8("ConnectButton"));
+        horizontalLayout_16 = new QHBoxLayout();
+        horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
+        IPAddressLabel = new QLabel(SourceTab);
+        IPAddressLabel->setObjectName(QString::fromUtf8("IPAddressLabel"));
 
-        verticalLayout_9->addWidget(ConnectButton);
+        horizontalLayout_16->addWidget(IPAddressLabel);
 
+        IPAddressEdit = new QLineEdit(SourceTab);
+        IPAddressEdit->setObjectName(QString::fromUtf8("IPAddressEdit"));
+        IPAddressEdit->setMinimumSize(QSize(0, 30));
+        IPAddressEdit->setMaximumSize(QSize(16777215, 30));
 
-        verticalLayout_10->addLayout(verticalLayout_9);
+        horizontalLayout_16->addWidget(IPAddressEdit);
+
+        horizontalLayout_16->setStretch(0, 1);
+        horizontalLayout_16->setStretch(1, 3);
+
+        verticalLayout->addLayout(horizontalLayout_16);
+
+        horizontalLayout_17 = new QHBoxLayout();
+        horizontalLayout_17->setObjectName(QString::fromUtf8("horizontalLayout_17"));
+        PortLabel = new QLabel(SourceTab);
+        PortLabel->setObjectName(QString::fromUtf8("PortLabel"));
+
+        horizontalLayout_17->addWidget(PortLabel);
+
+        PortEdit = new QSpinBox(SourceTab);
+        PortEdit->setObjectName(QString::fromUtf8("PortEdit"));
+        PortEdit->setMinimumSize(QSize(0, 30));
+        PortEdit->setMaximumSize(QSize(16777215, 30));
+
+        horizontalLayout_17->addWidget(PortEdit);
+
+        horizontalLayout_17->setStretch(0, 1);
+        horizontalLayout_17->setStretch(1, 3);
+
+        verticalLayout->addLayout(horizontalLayout_17);
 
         verticalSpacer_3 = new QSpacerItem(13, 267, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout_10->addItem(verticalSpacer_3);
+        verticalLayout->addItem(verticalSpacer_3);
+
+        ConnectButton = new QPushButton(SourceTab);
+        ConnectButton->setObjectName(QString::fromUtf8("ConnectButton"));
+        ConnectButton->setMinimumSize(QSize(0, 40));
+        ConnectButton->setMaximumSize(QSize(16777215, 40));
+
+        verticalLayout->addWidget(ConnectButton);
 
         tabWidget->addTab(SourceTab, QString());
         ObserverTab = new QWidget();
@@ -222,7 +276,7 @@ public:
 
         topLayout->addWidget(tabWidget);
 
-        Chart = new QGraphicsView(centralwidget);
+        Chart = new QChartView(centralwidget);
         Chart->setObjectName(QString::fromUtf8("Chart"));
 
         topLayout->addWidget(Chart);
@@ -264,7 +318,7 @@ public:
         menu->addAction(action);
         menu->addAction(action_2);
         menu_2->addAction(action_4);
-        menu_3->addAction(action_3);
+        menu_3->addAction(AboutMenu);
 
         retranslateUi(Monitor);
 
@@ -279,12 +333,14 @@ public:
         Monitor->setWindowTitle(QCoreApplication::translate("Monitor", "MainWindow", nullptr));
         action->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\205\245\346\225\260\346\215\256", nullptr));
         action_2->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\207\272\346\225\260\346\215\256", nullptr));
-        action_3->setText(QCoreApplication::translate("Monitor", "\345\205\263\344\272\216", nullptr));
+        AboutMenu->setText(QCoreApplication::translate("Monitor", "\345\205\263\344\272\216", nullptr));
         action_4->setText(QCoreApplication::translate("Monitor", "\347\224\237\346\210\220\346\210\252\345\233\276", nullptr));
-        label_9->setText(QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\235\245\346\272\220", nullptr));
-        label_10->setText(QCoreApplication::translate("Monitor", "COM\345\217\243", nullptr));
-        label_11->setText(QCoreApplication::translate("Monitor", "\346\263\242\347\211\271\347\216\207", nullptr));
-        label_12->setText(QCoreApplication::translate("Monitor", "\346\217\217\350\277\260", nullptr));
+        DataSourceLabel->setText(QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\235\245\346\272\220", nullptr));
+        COMLabel->setText(QCoreApplication::translate("Monitor", "COM\345\217\243", nullptr));
+        BaudrateLabel->setText(QCoreApplication::translate("Monitor", "\346\263\242\347\211\271\347\216\207", nullptr));
+        SourceDetailLabel->setText(QCoreApplication::translate("Monitor", "\346\217\217\350\277\260", nullptr));
+        IPAddressLabel->setText(QCoreApplication::translate("Monitor", "IP\345\234\260\345\235\200", nullptr));
+        PortLabel->setText(QCoreApplication::translate("Monitor", "\347\253\257\345\217\243", nullptr));
         ConnectButton->setText(QCoreApplication::translate("Monitor", "\350\277\236\346\216\245", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(SourceTab), QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\272\220", nullptr));
         AddButton->setText(QCoreApplication::translate("Monitor", "\346\267\273\345\212\240", nullptr));
