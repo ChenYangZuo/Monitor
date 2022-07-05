@@ -1,8 +1,10 @@
-#include "monitor.h"
 #include <QDebug>
 #include <QMessageBox>
+#include "monitor.h"
 #include "ui_monitor.h"
 #include "settingsdialog.h"
+#include "observeritem.h"
+#include "observerdialog.h"
 
 Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     // 初始化UI
@@ -53,6 +55,8 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     ui->Chart->setChart(chart);
     ui->Chart->setRenderHint(QPainter::Antialiasing);
 
+    connect(ui->AddButton,SIGNAL(clicked()),this,SLOT(AddObserver()));
+    connect(ui->DeleteButton,SIGNAL(clicked()),this,SLOT(DeleteObserve()));
     connect(ui->ChartSettings, SIGNAL(triggered()),this,SLOT(SetChart()));
     connect(ui->AboutMenu, SIGNAL(triggered()), this, SLOT(About()));
 
@@ -157,8 +161,9 @@ void Monitor::DataReceived() {
                 // 数据过滤
                 QRegExp rx("(?:\\[)(.*)(?:\\])");
                 rx.indexIn(msg, 0);
-                qDebug() << msg << rx.cap(0);
+//                qDebug() << msg << rx.cap(0);
                 double finalSignal = rx.cap(0).replace("[", "").replace("]", "").toDouble();
+
                 ChartData.append(finalSignal);
                 // 刷新Chart
                 while (ChartData.size() > (CHART_ADAPTER_ON?MAX_ADA_X:MAX_FIX_X)) {
@@ -197,9 +202,12 @@ void Monitor::DataReceived() {
                 ui->RawData->insertPlainText(Serial_buff);
                 QRegExp rx("(?:\\[)(.*)(?:\\])");
                 rx.indexIn(Serial_buff, 0);
-                ChartData.append(rx.cap(0).replace("[", "").replace("]", "").toDouble());
-                qDebug() << Serial_buff << rx.cap(0);
+                double finalSignal = rx.cap(0).replace("[", "").replace("]", "").toDouble();
+
+                ChartData.append(finalSignal);
+//                qDebug() << Serial_buff << rx.cap(0);
                 Serial_buff.clear();
+
                 // 刷新Chart
                 while (ChartData.size() > (CHART_ADAPTER_ON?MAX_ADA_X:MAX_FIX_X)) {
                     ChartData.removeFirst();
@@ -282,6 +290,29 @@ void Monitor::SetChart() {
         }
     }
     delete dialog;
+}
+
+// 添加一个观察者
+void Monitor::AddObserver(){
+    auto *dialog = new ObserverDialog(this);
+    int rtn = dialog->exec();
+    if(rtn == QDialog::Accepted){
+        auto *WContainerItem = new QListWidgetItem(ui->ObservedList);
+        WContainerItem->setSizeHint(QSize(40,50));
+        auto *WContainer = new ObserverItem(ui->ObservedList);
+        WContainer->setItemName(dialog->name);
+        WContainer->setItemIndex(temp++);//TODO 配合线的容器修改索引
+        WContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(dialog->color));
+        ui->ObservedList->setItemWidget(WContainerItem, WContainer);
+    }
+    delete dialog;
+}
+
+// 删除一个观察者
+void Monitor::DeleteObserve() {
+    qDebug()<<"DEL";
+    ui->ObservedList->removeItemWidget(ui->ObservedList->currentItem());
+    delete ui->ObservedList->currentItem();
 }
 
 // 关于界面

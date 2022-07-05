@@ -4,6 +4,10 @@ Monitor_autogen/timestamp: \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/main.cpp \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.cpp \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.cpp \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.cpp \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.cpp \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h \
   CMakeFiles/3.21.1/CMakeCXXCompiler.cmake \
@@ -434,6 +438,7 @@ Monitor_autogen/timestamp: \
   E:/Qt/5.15.2/mingw81_64/include/QtSerialPort/qserialport.h \
   E:/Qt/5.15.2/mingw81_64/include/QtSerialPort/qserialportglobal.h \
   E:/Qt/5.15.2/mingw81_64/include/QtSerialPort/qserialportinfo.h \
+  E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QCheckBox \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QCommonStyle \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
@@ -1032,5 +1037,6 @@ Monitor_autogen/timestamp: \
   E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wtypes.h \
   E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wtypesbase.h \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.ui \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.ui \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.ui \
   E:/Qt/Tools/CMake_64/bin/cmake.exe

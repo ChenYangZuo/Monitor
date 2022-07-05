@@ -32,7 +32,7 @@ public:
     int MIN_FIX_Y = -50;
 
 private:
-
+    int temp = 0;
 
     Ui::Monitor *ui;
     QList<QSerialPortInfo> serialPortInfos;
@@ -63,6 +63,10 @@ public slots:
     void SourceChanged(int);
 
     void SetChart();
+
+    void AddObserver();
+
+    void DeleteObserve();
 
     void About();
 };

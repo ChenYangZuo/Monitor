@@ -5,7 +5,14 @@
 	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor",
 	"CMAKE_SOURCE_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor",
 	"INCLUDE_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/Monitor_autogen/include",
-	"INPUTS" : [ "C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.png" ],
+	"INPUTS" : 
+	[
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/edit.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Star.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/delete.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Sun.png"
+	],
 	"LOCK_FILE" : "C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/CMakeFiles/Monitor_autogen.dir/AutoRcc_Monitor_Resource_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,
 	"OPTIONS" : [ "-name", "Monitor_Resource" ],

@@ -10,13 +10,14 @@
 #define UI_MONITOR_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -70,7 +71,7 @@ public:
     QPushButton *ConnectButton;
     QWidget *ObserverTab;
     QVBoxLayout *verticalLayout_8;
-    QListView *ObservedList;
+    QListWidget *ObservedList;
     QHBoxLayout *horizontalLayout_15;
     QToolButton *AddButton;
     QToolButton *DeleteButton;
@@ -249,7 +250,7 @@ public:
         ObserverTab->setObjectName(QString::fromUtf8("ObserverTab"));
         verticalLayout_8 = new QVBoxLayout(ObserverTab);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
-        ObservedList = new QListView(ObserverTab);
+        ObservedList = new QListWidget(ObserverTab);
         ObservedList->setObjectName(QString::fromUtf8("ObservedList"));
 
         verticalLayout_8->addWidget(ObservedList);
@@ -259,12 +260,18 @@ public:
         AddButton = new QToolButton(ObserverTab);
         AddButton->setObjectName(QString::fromUtf8("AddButton"));
         AddButton->setMinimumSize(QSize(32, 32));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        AddButton->setIcon(icon);
 
         horizontalLayout_15->addWidget(AddButton);
 
         DeleteButton = new QToolButton(ObserverTab);
         DeleteButton->setObjectName(QString::fromUtf8("DeleteButton"));
         DeleteButton->setMinimumSize(QSize(32, 32));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        DeleteButton->setIcon(icon1);
 
         horizontalLayout_15->addWidget(DeleteButton);
 
@@ -326,7 +333,7 @@ public:
 
         retranslateUi(Monitor);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Monitor);
@@ -340,7 +347,7 @@ public:
         AboutMenu->setText(QCoreApplication::translate("Monitor", "\345\205\263\344\272\216", nullptr));
         GenerateShot->setText(QCoreApplication::translate("Monitor", "\347\224\237\346\210\220\346\210\252\345\233\276", nullptr));
         ChartSettings->setText(QCoreApplication::translate("Monitor", "\347\224\273\345\270\203\350\256\276\347\275\256", nullptr));
-        DataSourceLabel->setText(QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\235\245\346\272\220", nullptr));
+        DataSourceLabel->setText(QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\272\220", nullptr));
         COMLabel->setText(QCoreApplication::translate("Monitor", "COM\345\217\243", nullptr));
         BaudrateLabel->setText(QCoreApplication::translate("Monitor", "\346\263\242\347\211\271\347\216\207", nullptr));
         SourceDetailLabel->setText(QCoreApplication::translate("Monitor", "\346\217\217\350\277\260", nullptr));
@@ -348,8 +355,8 @@ public:
         PortLabel->setText(QCoreApplication::translate("Monitor", "\347\253\257\345\217\243", nullptr));
         ConnectButton->setText(QCoreApplication::translate("Monitor", "\350\277\236\346\216\245", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(SourceTab), QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\272\220", nullptr));
-        AddButton->setText(QCoreApplication::translate("Monitor", "\346\267\273\345\212\240", nullptr));
-        DeleteButton->setText(QCoreApplication::translate("Monitor", "\345\210\240\351\231\244", nullptr));
+        AddButton->setText(QString());
+        DeleteButton->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(ObserverTab), QCoreApplication::translate("Monitor", "\350\247\202\345\257\237", nullptr));
         menu->setTitle(QCoreApplication::translate("Monitor", "\346\226\207\344\273\266", nullptr));
         menu_2->setTitle(QCoreApplication::translate("Monitor", "\346\223\215\344\275\234", nullptr));

@@ -87,6 +87,18 @@
 			null
 		],
 		[
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.h",
+			"MU",
+			"EWIEGA46WW/moc_observerdialog.cpp",
+			null
+		],
+		[
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h",
+			"MU",
+			"EWIEGA46WW/moc_observeritem.cpp",
+			null
+		],
+		[
 			"C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h",
 			"MU",
 			"EWIEGA46WW/moc_settingsdialog.cpp",
@@ -158,6 +170,12 @@
 	[
 		[ "C:/Users/zuo-c/Desktop/Monitor/Monitor/main.cpp", "MU", null ],
 		[ "C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.cpp", "MU", null ],
+		[
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.cpp",
+			"MU",
+			null
+		],
+		[ "C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.cpp", "MU", null ],
 		[
 			"C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.cpp",
 			"MU",

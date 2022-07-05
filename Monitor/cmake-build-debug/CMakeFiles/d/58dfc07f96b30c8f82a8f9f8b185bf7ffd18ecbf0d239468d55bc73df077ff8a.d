@@ -456,6 +456,10 @@ Monitor_autogen/timestamp: \
   ../main.cpp \
   ../monitor.cpp \
   ../monitor.h \
+  ../observerdialog.cpp \
+  ../observerdialog.h \
+  ../observeritem.cpp \
+  ../observeritem.h \
   ../settingsdialog.cpp \
   ../settingsdialog.h \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractAxis \
@@ -882,6 +886,7 @@ Monitor_autogen/timestamp: \
   E:/Qt/5.15.2/mingw81_64/include/QtSerialPort/qserialport.h \
   E:/Qt/5.15.2/mingw81_64/include/QtSerialPort/qserialportglobal.h \
   E:/Qt/5.15.2/mingw81_64/include/QtSerialPort/qserialportinfo.h \
+  E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QCheckBox \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QCommonStyle \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
@@ -1069,5 +1074,6 @@ Monitor_autogen/timestamp: \
   E:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake \
   E:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5Widgets_QWindowsVistaStylePlugin.cmake \
   ../monitor.ui \
+  ../observerdialog.ui \
   ../settingsdialog.ui \
   C:/Program\ Files/JetBrains/CLion\ 2021.3.3/bin/cmake/win/bin/cmake.exe

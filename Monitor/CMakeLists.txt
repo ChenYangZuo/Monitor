@@ -17,11 +17,11 @@ find_package(Qt5Charts)
 
 set(PROJECT_SOURCES
         main.cpp
-        monitor.cpp
-        monitor.h
-        monitor.ui
-        Monitor_Resource.qrc
+        monitor.cpp monitor.h monitor.ui
         settingsdialog.h settingsdialog.cpp settingsdialog.ui
+        observeritem.h observeritem.cpp
+        observerdialog.h observerdialog.cpp observerdialog.ui
+        Monitor_Resource.qrc ICON.rc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

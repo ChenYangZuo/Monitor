@@ -34,7 +34,7 @@
            </size>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="SourceTab">
            <attribute name="title">
@@ -46,7 +46,7 @@
               <item>
                <widget class="QLabel" name="DataSourceLabel">
                 <property name="text">
-                 <string>数据来源</string>
+                 <string>数据源</string>
                 </property>
                </widget>
               </item>
@@ -258,7 +258,7 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
-             <widget class="QListView" name="ObservedList"/>
+             <widget class="QListWidget" name="ObservedList"/>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -271,7 +271,11 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>添加</string>
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="Monitor_Resource.qrc">
+                  <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
                 </property>
                </widget>
               </item>
@@ -284,7 +288,11 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>删除</string>
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="Monitor_Resource.qrc">
+                  <normaloff>:/delete.png</normaloff>:/delete.png</iconset>
                 </property>
                </widget>
               </item>
@@ -390,6 +398,8 @@
    <header>QtCharts.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="Monitor_Resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>monitor.png</file>
+        <file>delete.png</file>
+        <file>edit.png</file>
+        <file>Star.png</file>
+        <file>Sun.png</file>
     </qresource>
 </RCC>
