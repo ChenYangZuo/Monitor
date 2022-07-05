@@ -332,14 +332,15 @@
     <property name="title">
      <string>文件</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
+    <addaction name="DataIn"/>
+    <addaction name="DataOut"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>操作</string>
     </property>
-    <addaction name="action_4"/>
+    <addaction name="GenerateShot"/>
+    <addaction name="ChartSettings"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
@@ -356,12 +357,12 @@
     <bool>true</bool>
    </property>
   </widget>
-  <action name="action">
+  <action name="DataIn">
    <property name="text">
     <string>导入数据</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="DataOut">
    <property name="text">
     <string>导出数据</string>
    </property>
@@ -371,9 +372,14 @@
     <string>关于</string>
    </property>
   </action>
-  <action name="action_4">
+  <action name="GenerateShot">
    <property name="text">
     <string>生成截图</string>
+   </property>
+  </action>
+  <action name="ChartSettings">
+   <property name="text">
+    <string>画布设置</string>
    </property>
   </action>
  </widget>

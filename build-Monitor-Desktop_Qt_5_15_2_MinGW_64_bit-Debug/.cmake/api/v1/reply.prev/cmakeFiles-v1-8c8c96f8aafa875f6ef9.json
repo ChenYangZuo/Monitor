@@ -286,6 +286,9 @@
 		{
 			"isExternal" : true,
 			"path" : "E:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Charts/Qt5ChartsConfig.cmake"
+		},
+		{
+			"path" : "Monitor_Resource.qrc"
 		}
 	],
 	"kind" : "cmakeFiles",

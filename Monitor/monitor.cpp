@@ -2,32 +2,39 @@
 #include <QDebug>
 #include <QMessageBox>
 #include "ui_monitor.h"
+#include "settingsdialog.h"
 
 Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
+    // 初始化UI
     ui->setupUi(this);
-
+    setWindowIcon(QIcon("://monitor.png"));
     setWindowTitle(QString("UDP/COM Monitor"));
-
+    // 初始化通信接口
     serialPort = new QSerialPort;
     udpSocket = new QUdpSocket(this);
-
+    // 初始化UI
     ui->DataSourceList->addItem(QString("UDP"));
     ui->DataSourceList->addItem(QString("COM"));
     connect(ui->DataSourceList, SIGNAL(currentIndexChanged(int)), this, SLOT(SourceChanged(int)));
-
     ui->BaudrateList->addItem(QString("115200"));
     ui->BaudrateList->addItem(QString("57600"));
     ui->BaudrateList->addItem(QString("38400"));
     ui->BaudrateList->addItem(QString("19200"));
     ui->BaudrateList->addItem(QString("9600"));
-
+    // 获取串口信息
     serialPortInfos = QSerialPortInfo::availablePorts();
     for (const QSerialPortInfo &serialPortInfo: serialPortInfos) {
         ui->COMList->addItem(serialPortInfo.portName());
     }
     QSerialPortInfo serialPortInfo = serialPortInfos[ui->COMList->currentIndex()];
     ui->SourceDetail->setText(QString("[%1]%2").arg(serialPortInfo.manufacturer(), serialPortInfo.description()));
-
+    connect(ui->COMList, SIGNAL(currentIndexChanged(int)), this, SLOT(COMChanged(int)));
+    // 设置UDP默认信息
+    ui->IPAddressEdit->setText("127.0.0.1");
+    ui->PortEdit->setMinimum(0);
+    ui->PortEdit->setMaximum(65535);
+    ui->PortEdit->setValue(5555);
+    // 默认显示UDP COM信息不可见
     ui->COMList->setVisible(false);
     ui->COMLabel->setVisible(false);
     ui->BaudrateList->setVisible(false);
@@ -35,26 +42,21 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     ui->SourceDetail->setVisible(false);
     ui->SourceDetailLabel->setVisible(false);
 
-    connect(ui->COMList, SIGNAL(currentIndexChanged(int)), this, SLOT(COMChanged(int)));
-
-    ui->IPAddressEdit->setText("127.0.0.1");
-    ui->PortEdit->setMinimum(0);
-    ui->PortEdit->setMaximum(65535);
-    ui->PortEdit->setValue(5555);
-
     connect(ui->ConnectButton, SIGNAL(clicked()), this, SLOT(btn_connect()));
 
+    // 初始化图表
     chart = new QChart();
     series = new QSplineSeries();
     chart->addSeries(series);
     chart->createDefaultAxes();
-    chart->axes(Qt::Vertical).first()->setRange(-125, 125);
-    chart->axes(Qt::Horizontal).first()->setRange(0, 100);
+    chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
     ui->Chart->setChart(chart);
     ui->Chart->setRenderHint(QPainter::Antialiasing);
 
-    connect(ui->AboutMenu,SIGNAL(triggered()),this,SLOT(About()));
+    connect(ui->ChartSettings, SIGNAL(triggered()),this,SLOT(SetChart()));
+    connect(ui->AboutMenu, SIGNAL(triggered()), this, SLOT(About()));
 
+    // 置状态栏信息
     StatusLabel = new QLabel("Ready.");
     statusBar()->addPermanentWidget(StatusLabel, 1);
 }
@@ -63,10 +65,11 @@ Monitor::~Monitor() {
     delete ui;
 }
 
+// 建立/断开连接
 void Monitor::btn_connect() {
     SourceMode = ui->DataSourceList->currentIndex();
     switch (SourceMode) {
-        //UDP
+        // UDP
         case 0: {
             if (!isConnected) {
                 port = ui->PortEdit->value();
@@ -98,7 +101,7 @@ void Monitor::btn_connect() {
             }
             break;
         }
-            //COM
+            // COM
         case 1: {
             if (!isConnected) {
                 serialPort->setPortName(ui->COMList->currentText());
@@ -139,54 +142,83 @@ void Monitor::btn_connect() {
     }
 }
 
+// 数据接受回调函数
 void Monitor::DataReceived() {
     switch (SourceMode) {
+        // UDP
         case 0: {
             while (udpSocket->hasPendingDatagrams()) {
+                // 取UDP数据
                 QByteArray datagram;
                 datagram.resize(int(udpSocket->pendingDatagramSize()));
                 udpSocket->readDatagram(datagram.data(), datagram.size());
                 QString msg = datagram.data();
                 ui->RawData->append(msg);
-
+                // 数据过滤
                 QRegExp rx("(?:\\[)(.*)(?:\\])");
                 rx.indexIn(msg, 0);
                 qDebug() << msg << rx.cap(0);
                 double finalSignal = rx.cap(0).replace("[", "").replace("]", "").toDouble();
                 ChartData.append(finalSignal);
-                qDebug() << finalSignal;
-                while (ChartData.size() > 80) {
+                // 刷新Chart
+                while (ChartData.size() > (CHART_ADAPTER_ON?MAX_ADA_X:MAX_FIX_X)) {
                     ChartData.removeFirst();
                 }
+                // 图表自适应大小
                 series->clear();
+                double max = 0;
+                double min = 0;
                 for (int i = 0; i < ChartData.size(); ++i) {
+                    if (ChartData.at(i) > max) {
+                        max = ChartData.at(i);
+                    }
+                    if (ChartData.at(i) < min) {
+                        min = ChartData.at(i);
+                    }
                     series->append(i, ChartData.at(i));
+                }
+                if(CHART_ADAPTER_ON){
+                    chart->axes(Qt::Vertical).first()->setRange(min - 10, max + 10);
                 }
             }
             break;
         }
+        // COM
         case 1: {
             QByteArray data = serialPort->readLine();
             if (!data.isEmpty()) {
+                // 取串口数据
                 QString strData = QString(data);
                 Serial_buff.append(strData);
                 if (!data.contains("\n")) {
                     return;
                 }
+                // 数据过滤
                 ui->RawData->insertPlainText(Serial_buff);
                 QRegExp rx("(?:\\[)(.*)(?:\\])");
                 rx.indexIn(Serial_buff, 0);
                 ChartData.append(rx.cap(0).replace("[", "").replace("]", "").toDouble());
                 qDebug() << Serial_buff << rx.cap(0);
                 Serial_buff.clear();
-
-                //刷新Chart
-                while (ChartData.size() > 100) {
+                // 刷新Chart
+                while (ChartData.size() > (CHART_ADAPTER_ON?MAX_ADA_X:MAX_FIX_X)) {
                     ChartData.removeFirst();
                 }
+                // 图表自适应大小
                 series->clear();
+                double max = 0;
+                double min = 0;
                 for (int i = 0; i < ChartData.size(); ++i) {
+                    if (ChartData.at(i) > max) {
+                        max = ChartData.at(i);
+                    }
+                    if (ChartData.at(i) < min) {
+                        min = ChartData.at(i);
+                    }
                     series->append(i, ChartData.at(i));
+                }
+                if(CHART_ADAPTER_ON){
+                    chart->axes(Qt::Vertical).first()->setRange(min - 10, max + 10);
                 }
             }
             break;
@@ -194,11 +226,13 @@ void Monitor::DataReceived() {
     }
 }
 
+// 切换COM口时显示详细信息
 void Monitor::COMChanged(int index) {
     QSerialPortInfo serialPortInfo = serialPortInfos[index];
     ui->SourceDetail->setText(QString("[%1]%2").arg(serialPortInfo.manufacturer(), serialPortInfo.description()));
 }
 
+// 切换源时更改可视
 void Monitor::SourceChanged(int index) {
     switch (index) {
         case 0:
@@ -230,6 +264,27 @@ void Monitor::SourceChanged(int index) {
     }
 }
 
-void Monitor::About(){
-    QMessageBox::about(nullptr,"About","HangZhouDianZiUniversity ZZZCY");
+// 画布属性设置
+void Monitor::SetChart() {
+    auto *dialog = new SettingsDialog(this);
+    int rtn = dialog->exec();
+    if(rtn == QDialog::Accepted){
+        CHART_ADAPTER_ON = dialog->adaptive;
+        if(!CHART_ADAPTER_ON){
+            MAX_FIX_X = dialog->MAX_X;
+            MAX_FIX_Y = dialog->MAX_Y;
+            MIN_FIX_Y = dialog->MIN_Y;
+            chart->axes(Qt::Horizontal).first()->setRange(0, MAX_FIX_X);
+            chart->axes(Qt::Vertical).first()->setRange(MIN_FIX_Y, MAX_FIX_Y);
+        }
+        else{
+            chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
+        }
+    }
+    delete dialog;
+}
+
+// 关于界面
+void Monitor::About() {
+    QMessageBox::about(nullptr, "About", "HangZhouDianZiUniversity ZZZCY");
 }

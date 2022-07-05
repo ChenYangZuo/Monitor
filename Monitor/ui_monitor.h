@@ -36,10 +36,11 @@ QT_BEGIN_NAMESPACE
 class Ui_Monitor
 {
 public:
-    QAction *action;
-    QAction *action_2;
+    QAction *DataIn;
+    QAction *DataOut;
     QAction *AboutMenu;
-    QAction *action_4;
+    QAction *GenerateShot;
+    QAction *ChartSettings;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *mainLayout;
@@ -87,14 +88,16 @@ public:
         if (Monitor->objectName().isEmpty())
             Monitor->setObjectName(QString::fromUtf8("Monitor"));
         Monitor->resize(1064, 671);
-        action = new QAction(Monitor);
-        action->setObjectName(QString::fromUtf8("action"));
-        action_2 = new QAction(Monitor);
-        action_2->setObjectName(QString::fromUtf8("action_2"));
+        DataIn = new QAction(Monitor);
+        DataIn->setObjectName(QString::fromUtf8("DataIn"));
+        DataOut = new QAction(Monitor);
+        DataOut->setObjectName(QString::fromUtf8("DataOut"));
         AboutMenu = new QAction(Monitor);
         AboutMenu->setObjectName(QString::fromUtf8("AboutMenu"));
-        action_4 = new QAction(Monitor);
-        action_4->setObjectName(QString::fromUtf8("action_4"));
+        GenerateShot = new QAction(Monitor);
+        GenerateShot->setObjectName(QString::fromUtf8("GenerateShot"));
+        ChartSettings = new QAction(Monitor);
+        ChartSettings->setObjectName(QString::fromUtf8("ChartSettings"));
         centralwidget = new QWidget(Monitor);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout_5 = new QVBoxLayout(centralwidget);
@@ -315,9 +318,10 @@ public:
         menubar->addAction(menu->menuAction());
         menubar->addAction(menu_2->menuAction());
         menubar->addAction(menu_3->menuAction());
-        menu->addAction(action);
-        menu->addAction(action_2);
-        menu_2->addAction(action_4);
+        menu->addAction(DataIn);
+        menu->addAction(DataOut);
+        menu_2->addAction(GenerateShot);
+        menu_2->addAction(ChartSettings);
         menu_3->addAction(AboutMenu);
 
         retranslateUi(Monitor);
@@ -331,10 +335,11 @@ public:
     void retranslateUi(QMainWindow *Monitor)
     {
         Monitor->setWindowTitle(QCoreApplication::translate("Monitor", "MainWindow", nullptr));
-        action->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\205\245\346\225\260\346\215\256", nullptr));
-        action_2->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\207\272\346\225\260\346\215\256", nullptr));
+        DataIn->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\205\245\346\225\260\346\215\256", nullptr));
+        DataOut->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\207\272\346\225\260\346\215\256", nullptr));
         AboutMenu->setText(QCoreApplication::translate("Monitor", "\345\205\263\344\272\216", nullptr));
-        action_4->setText(QCoreApplication::translate("Monitor", "\347\224\237\346\210\220\346\210\252\345\233\276", nullptr));
+        GenerateShot->setText(QCoreApplication::translate("Monitor", "\347\224\237\346\210\220\346\210\252\345\233\276", nullptr));
+        ChartSettings->setText(QCoreApplication::translate("Monitor", "\347\224\273\345\270\203\350\256\276\347\275\256", nullptr));
         DataSourceLabel->setText(QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\235\245\346\272\220", nullptr));
         COMLabel->setText(QCoreApplication::translate("Monitor", "COM\345\217\243", nullptr));
         BaudrateLabel->setText(QCoreApplication::translate("Monitor", "\346\263\242\347\211\271\347\216\207", nullptr));

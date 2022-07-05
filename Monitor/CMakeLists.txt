@@ -20,6 +20,8 @@ set(PROJECT_SOURCES
         monitor.cpp
         monitor.h
         monitor.ui
+        Monitor_Resource.qrc
+        settingsdialog.h settingsdialog.cpp settingsdialog.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

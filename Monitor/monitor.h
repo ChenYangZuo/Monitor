@@ -24,23 +24,29 @@ Q_OBJECT
 
 public:
     Monitor(QWidget *parent = nullptr);
-
     ~Monitor();
+    bool CHART_ADAPTER_ON = true;
+    const int MAX_ADA_X = 100;
+    int MAX_FIX_X = 100;
+    int MAX_FIX_Y = 50;
+    int MIN_FIX_Y = -50;
 
 private:
+
+
     Ui::Monitor *ui;
     QList<QSerialPortInfo> serialPortInfos;
     QSerialPort *serialPort;
+    QString Serial_buff = "";
     QUdpSocket *udpSocket;
 
-    int port = 5555;
     bool isConnected = false;
+    int port = 5555;
     int SourceMode = 0;
 
     QChart *chart;
     QList<double> ChartData;
     QSplineSeries *series;
-    QString Serial_buff = "";
 
     QList<long> mBaudRateList = {115200, 57600, 38400, 19200, 9600};
 
@@ -55,6 +61,8 @@ public slots:
     void COMChanged(int);
 
     void SourceChanged(int);
+
+    void SetChart();
 
     void About();
 };
