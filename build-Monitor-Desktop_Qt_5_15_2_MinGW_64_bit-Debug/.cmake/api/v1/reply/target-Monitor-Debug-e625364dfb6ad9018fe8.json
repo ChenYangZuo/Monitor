@@ -153,7 +153,99 @@
 				6,
 				9,
 				11,
-				18
+				19
+			]
+		},
+		{
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "QT_CHARTS_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_SERIALPORT_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_WIDGETS_LIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"path" : "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug"
+				},
+				{
+					"path" : "C:/Users/zuo-c/Desktop/Monitor/Monitor"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/5.15.2/mingw81_64/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/5.15.2/mingw81_64/include/QtWidgets"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/5.15.2/mingw81_64/include/QtGui"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/5.15.2/mingw81_64/include/QtANGLE"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/5.15.2/mingw81_64/include/QtCore"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/5.15.2/mingw81_64/./mkspecs/win32-g++"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/5.15.2/mingw81_64/include/QtCharts"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/5.15.2/mingw81_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/5.15.2/mingw81_64/include/QtSerialPort"
+				}
+			],
+			"language" : "RC",
+			"sourceIndexes" : 
+			[
+				14
 			]
 		}
 	],
@@ -238,7 +330,8 @@
 				6,
 				9,
 				11,
-				18
+				14,
+				19
 			]
 		},
 		{
@@ -249,9 +342,9 @@
 				5,
 				8,
 				10,
-				14,
 				15,
-				16
+				16,
+				17
 			]
 		},
 		{
@@ -262,15 +355,15 @@
 				7,
 				12,
 				13,
-				17
+				18
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				19,
-				20
+				20,
+				21
 			]
 		}
 	],
@@ -352,6 +445,12 @@
 			"backtrace" : 1,
 			"path" : "Monitor_Resource.qrc",
 			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "ICON.rc",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,

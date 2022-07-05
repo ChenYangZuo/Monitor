@@ -189,7 +189,7 @@ build Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp | ${cmake_ninja_workdi
 #############################################
 # Phony custom command for CMakeFiles\Monitor_autogen_timestamp_deps
 
-build CMakeFiles/Monitor_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/Monitor_autogen_timestamp_deps: phony E$:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a E$:/Qt/5.15.2/mingw81_64/bin/moc.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a E$:/Qt/5.15.2/mingw81_64/bin/uic.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5SerialPort.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Charts.a
+build CMakeFiles/Monitor_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/Monitor_autogen_timestamp_deps: phony E$:/Qt/5.15.2/mingw81_64/lib/libQt5SerialPort.a E$:/Qt/5.15.2/mingw81_64/bin/uic.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a E$:/Qt/5.15.2/mingw81_64/bin/moc.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Charts.a
 
 
 #############################################

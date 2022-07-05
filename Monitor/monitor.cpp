@@ -55,9 +55,9 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     ui->Chart->setChart(chart);
     ui->Chart->setRenderHint(QPainter::Antialiasing);
 
-    connect(ui->AddButton,SIGNAL(clicked()),this,SLOT(AddObserver()));
-    connect(ui->DeleteButton,SIGNAL(clicked()),this,SLOT(DeleteObserve()));
-    connect(ui->ChartSettings, SIGNAL(triggered()),this,SLOT(SetChart()));
+    connect(ui->AddButton, SIGNAL(clicked()), this, SLOT(AddObserver()));
+    connect(ui->DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteObserve()));
+    connect(ui->ChartSettings, SIGNAL(triggered()), this, SLOT(SetChart()));
     connect(ui->AboutMenu, SIGNAL(triggered()), this, SLOT(About()));
 
     // 置状态栏信息
@@ -146,7 +146,7 @@ void Monitor::btn_connect() {
     }
 }
 
-// 数据接受回调函数
+// 数据接收回调函数
 void Monitor::DataReceived() {
     switch (SourceMode) {
         // UDP
@@ -159,36 +159,36 @@ void Monitor::DataReceived() {
                 QString msg = datagram.data();
                 ui->RawData->append(msg);
                 // 数据过滤
-                QRegExp rx("(?:\\[)(.*)(?:\\])");
-                rx.indexIn(msg, 0);
-//                qDebug() << msg << rx.cap(0);
-                double finalSignal = rx.cap(0).replace("[", "").replace("]", "").toDouble();
+                QStringList msgList = msg.split(",");
+                if(msgList.size()==2){
+                    DataMap.value(msgList[0])->append(msgList.at(1).toDouble());
+                }
 
-                ChartData.append(finalSignal);
                 // 刷新Chart
-                while (ChartData.size() > (CHART_ADAPTER_ON?MAX_ADA_X:MAX_FIX_X)) {
-                    ChartData.removeFirst();
+                while (DataMap.value(msgList[0])->size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
+                    DataMap.value(msgList[0])->removeFirst();
                 }
                 // 图表自适应大小
-                series->clear();
+                SeriesMap.value(msgList[0])->clear();
                 double max = 0;
                 double min = 0;
-                for (int i = 0; i < ChartData.size(); ++i) {
-                    if (ChartData.at(i) > max) {
-                        max = ChartData.at(i);
+                for (int i = 0; i < DataMap.value(msgList[0])->size(); ++i) {
+                    if (DataMap.value(msgList[0])->at(i) > max) {
+                        max = DataMap.value(msgList[0])->at(i);
                     }
-                    if (ChartData.at(i) < min) {
-                        min = ChartData.at(i);
+                    if (DataMap.value(msgList[0])->at(i) < min) {
+                        min = DataMap.value(msgList[0])->at(i);
                     }
-                    series->append(i, ChartData.at(i));
+                    SeriesMap.value(msgList[0])->append(i, DataMap.value(msgList[0])->at(i));
                 }
-                if(CHART_ADAPTER_ON){
+                if (CHART_ADAPTER_ON) {
                     chart->axes(Qt::Vertical).first()->setRange(min - 10, max + 10);
                 }
             }
             break;
         }
         // COM
+        /*
         case 1: {
             QByteArray data = serialPort->readLine();
             if (!data.isEmpty()) {
@@ -209,7 +209,7 @@ void Monitor::DataReceived() {
                 Serial_buff.clear();
 
                 // 刷新Chart
-                while (ChartData.size() > (CHART_ADAPTER_ON?MAX_ADA_X:MAX_FIX_X)) {
+                while (ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
                     ChartData.removeFirst();
                 }
                 // 图表自适应大小
@@ -225,12 +225,13 @@ void Monitor::DataReceived() {
                     }
                     series->append(i, ChartData.at(i));
                 }
-                if(CHART_ADAPTER_ON){
+                if (CHART_ADAPTER_ON) {
                     chart->axes(Qt::Vertical).first()->setRange(min - 10, max + 10);
                 }
             }
             break;
         }
+         */
     }
 }
 
@@ -276,16 +277,15 @@ void Monitor::SourceChanged(int index) {
 void Monitor::SetChart() {
     auto *dialog = new SettingsDialog(this);
     int rtn = dialog->exec();
-    if(rtn == QDialog::Accepted){
+    if (rtn == QDialog::Accepted) {
         CHART_ADAPTER_ON = dialog->adaptive;
-        if(!CHART_ADAPTER_ON){
+        if (!CHART_ADAPTER_ON) {
             MAX_FIX_X = dialog->MAX_X;
             MAX_FIX_Y = dialog->MAX_Y;
             MIN_FIX_Y = dialog->MIN_Y;
             chart->axes(Qt::Horizontal).first()->setRange(0, MAX_FIX_X);
             chart->axes(Qt::Vertical).first()->setRange(MIN_FIX_Y, MAX_FIX_Y);
-        }
-        else{
+        } else {
             chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
         }
     }
@@ -293,24 +293,30 @@ void Monitor::SetChart() {
 }
 
 // 添加一个观察者
-void Monitor::AddObserver(){
+void Monitor::AddObserver() {
     auto *dialog = new ObserverDialog(this);
     int rtn = dialog->exec();
-    if(rtn == QDialog::Accepted){
+    if (rtn == QDialog::Accepted) {
         auto *WContainerItem = new QListWidgetItem(ui->ObservedList);
-        WContainerItem->setSizeHint(QSize(40,50));
+        WContainerItem->setSizeHint(QSize(40, 50));
         auto *WContainer = new ObserverItem(ui->ObservedList);
         WContainer->setItemName(dialog->name);
-        WContainer->setItemIndex(temp++);//TODO 配合线的容器修改索引
+        WContainer->setItemIndex(temp++);
         WContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(dialog->color));
         ui->ObservedList->setItemWidget(WContainerItem, WContainer);
+        //TODO 配合线的容器修改索引
+        QList<double> *ChartData = new QList<double>;
+        QSplineSeries *ChartSeries = new QSplineSeries;
+        DataMap.insert(dialog->name,ChartData);
+        SeriesMap.insert(dialog->name,ChartSeries);
+        chart->addSeries(ChartSeries);
     }
     delete dialog;
 }
 
 // 删除一个观察者
 void Monitor::DeleteObserve() {
-    qDebug()<<"DEL";
+    qDebug() << "DEL";
     ui->ObservedList->removeItemWidget(ui->ObservedList->currentItem());
     delete ui->ObservedList->currentItem();
 }

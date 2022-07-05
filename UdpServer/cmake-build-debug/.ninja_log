@@ -1,0 +1,9 @@
+# ninja log v5
+1	529	6783604321386932	UdpServer_autogen/timestamp	4d4ddf2e65debef2
+1	529	6783604321386932	UdpServer_autogen/mocs_compilation.cpp	4d4ddf2e65debef2
+1	529	6783604321386932	D:/Project/QtDevelopment/UdpServer/cmake-build-debug/UdpServer_autogen/timestamp	4d4ddf2e65debef2
+1	529	6783604321386932	D:/Project/QtDevelopment/UdpServer/cmake-build-debug/UdpServer_autogen/mocs_compilation.cpp	4d4ddf2e65debef2
+543	1562	6783604332665004	CMakeFiles/UdpServer.dir/main.cpp.obj	d258d1b59725a0c6
+530	1595	6783604332971016	CMakeFiles/UdpServer.dir/UdpServer_autogen/mocs_compilation.cpp.obj	9763d7d93b96934
+536	1597	6783604333020617	CMakeFiles/UdpServer.dir/udpserver.cpp.obj	8386b41c3facddd8
+1597	1727	6783604334287701	UdpServer.exe	b00e9edb5673690

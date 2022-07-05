@@ -963,14 +963,14 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.h
  mdp:E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wow64apiset.h
  mdp:E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wtypes.h
  mdp:E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wtypesbase.h
-C:/Users/zuo-c/Desktop/Monitor/Monitor/main.cpp
 C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.cpp
  uic:ui_settingsdialog.h
+C:/Users/zuo-c/Desktop/Monitor/Monitor/main.cpp
 C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.cpp
  uic:ui_monitor.h
-C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h
+C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h
  mmc:Q_OBJECT
- mdp:C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h
+ mdp:C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h
  mdp:C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/moc_predefs.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h
@@ -1034,7 +1034,6 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qfont.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qfontinfo.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qfontmetrics.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qimage.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qkeysequence.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qmatrix.h
@@ -1051,18 +1050,8 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qtransform.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs_win.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QCheckBox
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QWidget
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qboxlayout.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qcheckbox.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayoutitem.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qsizepolicy.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtwidgets-config.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtwidgetsglobal.h
@@ -1240,9 +1229,9 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h
  mdp:E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wchar.h
  mdp:E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wctype.h
-C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h
+C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h
  mmc:Q_OBJECT
- mdp:C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h
+ mdp:C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h
  mdp:C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/moc_predefs.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h
@@ -1306,6 +1295,7 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qfont.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qfontinfo.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qfontmetrics.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qimage.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qkeysequence.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qmatrix.h
@@ -1322,8 +1312,18 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qtransform.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs_win.h
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog
- mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QCheckBox
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QWidget
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qboxlayout.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qcheckbox.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayoutitem.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qsizepolicy.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtwidgets-config.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtwidgetsglobal.h

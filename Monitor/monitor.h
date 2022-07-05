@@ -24,7 +24,9 @@ Q_OBJECT
 
 public:
     Monitor(QWidget *parent = nullptr);
+
     ~Monitor();
+
     bool CHART_ADAPTER_ON = true;
     const int MAX_ADA_X = 100;
     int MAX_FIX_X = 100;
@@ -45,8 +47,11 @@ private:
     int SourceMode = 0;
 
     QChart *chart;
-    QList<double> ChartData;
+//    QList<double> ChartData;
+//    QList<double> CosChartData;
     QSplineSeries *series;
+    QMap<QString,QList<double>*> DataMap;
+    QMap<QString,QSplineSeries*> SeriesMap;
 
     QList<long> mBaudRateList = {115200, 57600, 38400, 19200, 9600};
 

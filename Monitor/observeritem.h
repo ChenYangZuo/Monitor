@@ -7,11 +7,14 @@
 #include <QLabel>
 
 class ObserverItem : public QWidget {
-    Q_OBJECT
+Q_OBJECT
 public:
     explicit ObserverItem(QWidget *parent = nullptr);
-    void setItemName(const QString&);
+
+    void setItemName(const QString &);
+
     void setItemIndex(int);
+
     void setItemColor(QString);
 
 private:
@@ -22,6 +25,7 @@ private:
     QString mStyle = QString("QLabel{background-color:blue;}");
 
 public slots:
+
     void checkBoxChanged();
 
 };
