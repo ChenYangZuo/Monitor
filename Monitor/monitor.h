@@ -14,6 +14,7 @@
 #include <QtCharts>
 #include <QtCharts/QChartView>
 #include <QtCharts/QSplineSeries>
+#include "chartitem.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Monitor; }
@@ -49,9 +50,8 @@ private:
     QChart *chart;
 //    QList<double> ChartData;
 //    QList<double> CosChartData;
-    QSplineSeries *series;
-    QMap<QString,QList<double>*> DataMap;
-    QMap<QString,QSplineSeries*> SeriesMap;
+//    QSplineSeries *series;
+    QList<ChartItem> ChartList;
 
     QList<long> mBaudRateList = {115200, 57600, 38400, 19200, 9600};
 
