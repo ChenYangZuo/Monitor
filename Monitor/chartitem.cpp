@@ -19,3 +19,7 @@ void ChartItem::setChartSeries(QSplineSeries series){
 void ChartItem::start(){
     isStart = true;
 }
+
+void ChartItem::finish(){
+    isStart = false;
+}

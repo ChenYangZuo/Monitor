@@ -8,14 +8,9 @@ ObserverItem::ObserverItem(QWidget *parent) : QWidget{parent} {
     mainLayout->addWidget(checkBox);
     mainLayout->addWidget(nameLabel);
     setLayout(mainLayout);
-    connect(checkBox, SIGNAL(stateChanged(int)), this, SLOT(checkBoxChanged()));
 }
 
-void ObserverItem::checkBoxChanged() {
-    qDebug() << "You Pushed Num " << mIndex;
-}
-
-void ObserverItem::setItemName(const QString &name) {
+void ObserverItem::setItemName(const QString &name) const {
     checkBox->setText(name);
 }
 

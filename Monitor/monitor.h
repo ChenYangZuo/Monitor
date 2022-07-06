@@ -14,6 +14,7 @@
 #include <QtCharts>
 #include <QtCharts/QChartView>
 #include <QtCharts/QSplineSeries>
+#include <QListWidget>
 #include "chartitem.h"
 
 QT_BEGIN_NAMESPACE
@@ -68,6 +69,8 @@ public slots:
     void AddObserver();
 
     void DeleteObserve();
+
+    void CheckBoxChanged(int);
 
     void About();
 };

@@ -17,6 +17,7 @@ public:
     void setChartData(QList<double>);
     void setChartSeries(QSplineSeries);
     void start();
+    void finish();
 
 };
 

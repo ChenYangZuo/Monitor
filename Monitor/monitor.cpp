@@ -60,6 +60,7 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     // 置状态栏信息
     StatusLabel = new QLabel("Ready.");
     statusBar()->addPermanentWidget(StatusLabel, 1);
+
 }
 
 Monitor::~Monitor() {
@@ -313,6 +314,8 @@ void Monitor::AddObserver() {
         auto *WContainerItem = new QListWidgetItem(ui->ObservedList);
         WContainerItem->setSizeHint(QSize(40, 50));
         auto *WContainer = new ObserverItem(ui->ObservedList);
+        WContainer->checkBox->setChecked(true);
+        connect(WContainer->checkBox,SIGNAL(stateChanged(int)),this,SLOT(CheckBoxChanged(int)));
         WContainer->setItemName(dialog->name);
         WContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(dialog->color));
         ui->ObservedList->setItemWidget(WContainerItem, WContainer);
@@ -320,6 +323,7 @@ void Monitor::AddObserver() {
         auto *chartitem = new ChartItem();
         chartitem->setName(dialog->name);
         chartitem->ChartSeries->setColor(QColor(dialog->color));
+        chartitem->start();
         chart->addSeries(chartitem->ChartSeries);
         chart->createDefaultAxes();
         ChartList.append(*chartitem);
@@ -344,5 +348,28 @@ void Monitor::DeleteObserve() {
 
 // 关于界面
 void Monitor::About() {
-    QMessageBox::about(nullptr, "About", "HangZhouDianZiUniversity ZZZCY");
+    QMessageBox::about(this, "About", "\nHangZhouDianZiUniversity\nZZZCY");
+}
+
+// 观察者可视变化
+void Monitor::CheckBoxChanged(int a){
+    qDebug()<<"CHANGED!";
+    for(int i=0;i<ui->ObservedList->count();i++){
+        if(ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>("checkBox")->isChecked()){
+            for (auto &j: ChartList) {
+                if (j.ChartName == ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>("checkBox")->text()) {
+                    j.start();
+                    chart->addSeries(j.ChartSeries);
+                }
+            }
+        }
+        else{
+            for (auto &j: ChartList) {
+                if (j.ChartName == ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>("checkBox")->text()) {
+                    j.finish();
+                    chart->removeSeries(j.ChartSeries);
+                }
+            }
+        }
+    }
 }

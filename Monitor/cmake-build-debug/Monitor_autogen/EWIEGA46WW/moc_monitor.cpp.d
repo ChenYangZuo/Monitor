@@ -862,6 +862,7 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/Monitor_autogen/EWIEGA4
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
+  E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QListWidget \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMainWindow \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QPushButton \
   E:/Qt/5.15.2/mingw81_64/include/QtWidgets/QScrollerProperties \
