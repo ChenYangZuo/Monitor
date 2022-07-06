@@ -715,6 +715,7 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.h
  mdp:C:/Program Files/JetBrains/CLion 2021.3.3/bin/mingw/x86_64-w64-mingw32/include/wow64apiset.h
  mdp:C:/Program Files/JetBrains/CLion 2021.3.3/bin/mingw/x86_64-w64-mingw32/include/wtypes.h
  mdp:C:/Program Files/JetBrains/CLion 2021.3.3/bin/mingw/x86_64-w64-mingw32/include/wtypesbase.h
+ mdp:C:/Users/zuo-c/Desktop/Monitor/Monitor/chartitem.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractAxis
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractBarSeries
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractSeries
@@ -1866,3 +1867,5 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtWidgets/qwidget.h
 C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.cpp
  uic:ui_observerdialog.h
+C:/Users/zuo-c/Desktop/Monitor/Monitor/chartitem.h
+C:/Users/zuo-c/Desktop/Monitor/Monitor/chartitem.cpp

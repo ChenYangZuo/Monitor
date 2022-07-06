@@ -1,5 +1,6 @@
 C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/EWIEGA46WW/moc_monitor.cpp: C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.h \
   C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/moc_predefs.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/chartitem.h \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractAxis \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractBarSeries \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractSeries \

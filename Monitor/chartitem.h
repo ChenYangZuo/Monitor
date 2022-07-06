@@ -8,6 +8,7 @@ class ChartItem {
 
 public:
     ChartItem();
+    bool isStart = false;
     QString ChartName;
     QList<double> ChartData;
     QSplineSeries *ChartSeries;
@@ -15,6 +16,7 @@ public:
     void setName(QString);
     void setChartData(QList<double>);
     void setChartSeries(QSplineSeries);
+    void start();
 
 };
 

@@ -161,15 +161,13 @@ void Monitor::DataReceived() {
                 // 数据过滤
                 QStringList msgList = msg.split(",");
                 if(msgList.size()==2){
-                    for(ChartItem i : ChartList){
+                    for(auto & i : ChartList){
                         if(i.ChartName == msgList[0]){
-//                            qDebug()<<"ADD "<<msgList[0];
                             i.ChartData.append(msgList.at(1).toDouble());
-                            qDebug()<<i.ChartData;
                         }
                     }
                 }
-                for(ChartItem i : ChartList){
+                for(auto & i : ChartList){
                     // 刷新Chart
                     while (i.ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
                         i.ChartData.removeFirst();
@@ -187,7 +185,6 @@ void Monitor::DataReceived() {
                         }
                         i.ChartSeries->append(j, i.ChartData.at(j));
                     }
-//                    qDebug()<<i.ChartData;
                     chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
                     if (CHART_ADAPTER_ON) {
                         chart->axes(Qt::Vertical).first()->setRange(min - 10, max + 10);
@@ -197,7 +194,6 @@ void Monitor::DataReceived() {
             break;
         }
         // COM
-        /*
         case 1: {
             QByteArray data = serialPort->readLine();
             if (!data.isEmpty()) {
@@ -207,38 +203,43 @@ void Monitor::DataReceived() {
                 if (!data.contains("\n")) {
                     return;
                 }
-                // 数据过滤
                 ui->RawData->insertPlainText(Serial_buff);
-                QRegExp rx("(?:\\[)(.*)(?:\\])");
-                rx.indexIn(Serial_buff, 0);
-                double finalSignal = rx.cap(0).replace("[", "").replace("]", "").toDouble();
-
-                ChartData.append(finalSignal);
+                // 数据过滤
+                QStringList msgList = Serial_buff.split(",");
+                if(msgList.size()==2){
+                    for(auto & i : ChartList){
+                        if(i.ChartName == msgList[0]){
+                            i.ChartData.append(msgList.at(1).toDouble());
+                        }
+                    }
+                }
                 Serial_buff.clear();
-
-                // 刷新Chart
-                while (ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
-                    ChartData.removeFirst();
-                }
-                // 图表自适应大小
-                series->clear();
-                double max = 0;
-                double min = 0;
-                for (int i = 0; i < ChartData.size(); ++i) {
-                    if (ChartData.at(i) > max) {
-                        max = ChartData.at(i);
+                for(auto & i : ChartList) {
+                    // 刷新Chart
+                    while (i.ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
+                        i.ChartData.removeFirst();
                     }
-                    if (ChartData.at(i) < min) {
-                        min = ChartData.at(i);
+                    // 图表自适应大小
+                    i.ChartSeries->clear();
+                    double max = 0;
+                    double min = 0;
+                    for (int j = 0; j < i.ChartData.size(); ++j) {
+                        if (i.ChartData.at(j) > max) {
+                            max = i.ChartData.at(j);
+                        }
+                        if (i.ChartData.at(j) < min) {
+                            min = i.ChartData.at(j);
+                        }
+                        i.ChartSeries->append(j, i.ChartData.at(j));
                     }
-                    series->append(i, ChartData.at(i));
-                }
-                if (CHART_ADAPTER_ON) {
-                    chart->axes(Qt::Vertical).first()->setRange(min - 10, max + 10);
+                    chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
+                    if (CHART_ADAPTER_ON) {
+                        chart->axes(Qt::Vertical).first()->setRange(min - 10, max + 10);
+                    }
                 }
             }
             break;
-        }*/
+        }
     }
 }
 
@@ -324,7 +325,6 @@ void Monitor::AddObserver() {
 
 // 删除一个观察者
 void Monitor::DeleteObserve() {
-    qDebug() << "DEL";
     ui->ObservedList->removeItemWidget(ui->ObservedList->currentItem());
     delete ui->ObservedList->currentItem();
 }

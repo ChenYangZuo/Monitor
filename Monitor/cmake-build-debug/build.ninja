@@ -97,6 +97,14 @@ build CMakeFiles/Monitor.dir/observerdialog.cpp.obj: CXX_COMPILER__Monitor_Debug
   OBJECT_DIR = CMakeFiles\Monitor.dir
   OBJECT_FILE_DIR = CMakeFiles\Monitor.dir
 
+build CMakeFiles/Monitor.dir/chartitem.cpp.obj: CXX_COMPILER__Monitor_Debug C$:/Users/zuo-c/Desktop/Monitor/Monitor/chartitem.cpp || cmake_object_order_depends_target_Monitor
+  DEFINES = -DQT_CHARTS_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles\Monitor.dir\chartitem.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug -IC:/Users/zuo-c/Desktop/Monitor/Monitor -IC:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/Monitor_autogen/include -isystem E:/Qt/5.15.2/mingw81_64/include -isystem E:/Qt/5.15.2/mingw81_64/include/QtWidgets -isystem E:/Qt/5.15.2/mingw81_64/include/QtGui -isystem E:/Qt/5.15.2/mingw81_64/include/QtANGLE -isystem E:/Qt/5.15.2/mingw81_64/include/QtCore -isystem E:/Qt/5.15.2/mingw81_64/./mkspecs/win32-g++ -isystem E:/Qt/5.15.2/mingw81_64/include/QtCharts -isystem E:/Qt/5.15.2/mingw81_64/include/QtNetwork -isystem E:/Qt/5.15.2/mingw81_64/include/QtSerialPort
+  OBJECT_DIR = CMakeFiles\Monitor.dir
+  OBJECT_FILE_DIR = CMakeFiles\Monitor.dir
+
 build CMakeFiles/Monitor.dir/ICON.rc.obj: RC_COMPILER__Monitor_Debug C$:/Users/zuo-c/Desktop/Monitor/Monitor/ICON.rc || cmake_object_order_depends_target_Monitor
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
   DEP_FILE = CMakeFiles\Monitor.dir\ICON.rc.obj.d
@@ -120,7 +128,7 @@ build CMakeFiles/Monitor.dir/Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp
 #############################################
 # Link the executable Monitor.exe
 
-build Monitor.exe: CXX_EXECUTABLE_LINKER__Monitor_Debug CMakeFiles/Monitor.dir/Monitor_autogen/mocs_compilation.cpp.obj CMakeFiles/Monitor.dir/main.cpp.obj CMakeFiles/Monitor.dir/monitor.cpp.obj CMakeFiles/Monitor.dir/settingsdialog.cpp.obj CMakeFiles/Monitor.dir/observeritem.cpp.obj CMakeFiles/Monitor.dir/observerdialog.cpp.obj CMakeFiles/Monitor.dir/ICON.rc.obj CMakeFiles/Monitor.dir/Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp.obj | E$:/Qt/5.15.2/mingw81_64/lib/libQt5Charts.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5SerialPort.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a E$:/Qt/5.15.2/mingw81_64/lib/libqtmain.a || Monitor_autogen Monitor_autogen_timestamp_deps
+build Monitor.exe: CXX_EXECUTABLE_LINKER__Monitor_Debug CMakeFiles/Monitor.dir/Monitor_autogen/mocs_compilation.cpp.obj CMakeFiles/Monitor.dir/main.cpp.obj CMakeFiles/Monitor.dir/monitor.cpp.obj CMakeFiles/Monitor.dir/settingsdialog.cpp.obj CMakeFiles/Monitor.dir/observeritem.cpp.obj CMakeFiles/Monitor.dir/observerdialog.cpp.obj CMakeFiles/Monitor.dir/chartitem.cpp.obj CMakeFiles/Monitor.dir/ICON.rc.obj CMakeFiles/Monitor.dir/Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp.obj | E$:/Qt/5.15.2/mingw81_64/lib/libQt5Charts.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5SerialPort.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a E$:/Qt/5.15.2/mingw81_64/lib/libqtmain.a || Monitor_autogen Monitor_autogen_timestamp_deps
   FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = E:/Qt/5.15.2/mingw81_64/lib/libQt5Charts.a  E:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a  E:/Qt/5.15.2/mingw81_64/lib/libQt5SerialPort.a  E:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a  E:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a  E:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a  E:/Qt/5.15.2/mingw81_64/lib/libqtmain.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -189,7 +197,7 @@ build Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp | ${cmake_ninja_workdi
 #############################################
 # Phony custom command for CMakeFiles\Monitor_autogen_timestamp_deps
 
-build CMakeFiles/Monitor_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/Monitor_autogen_timestamp_deps: phony E$:/Qt/5.15.2/mingw81_64/lib/libQt5SerialPort.a E$:/Qt/5.15.2/mingw81_64/bin/uic.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a E$:/Qt/5.15.2/mingw81_64/bin/moc.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Charts.a
+build CMakeFiles/Monitor_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/Monitor_autogen_timestamp_deps: phony E$:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a E$:/Qt/5.15.2/mingw81_64/bin/moc.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a E$:/Qt/5.15.2/mingw81_64/bin/uic.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Charts.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5SerialPort.a
 
 
 #############################################

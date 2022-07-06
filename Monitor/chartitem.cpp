@@ -15,3 +15,7 @@ void ChartItem::setChartData(QList<double> data){
 void ChartItem::setChartSeries(QSplineSeries series){
     ChartSeries = &series;
 }
+
+void ChartItem::start(){
+    isStart = true;
+}
