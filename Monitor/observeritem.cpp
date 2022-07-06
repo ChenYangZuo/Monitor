@@ -3,6 +3,7 @@
 #include <utility>
 
 ObserverItem::ObserverItem(QWidget *parent) : QWidget{parent} {
+    checkBox->setObjectName("checkBox");
     nameLabel->setFixedSize(10, 10);
     mainLayout->addWidget(checkBox);
     mainLayout->addWidget(nameLabel);

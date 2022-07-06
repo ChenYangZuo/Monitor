@@ -49,9 +49,6 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
 
     // 初始化图表
     chart = new QChart();
-//    series = new QSplineSeries();
-//    chart->addSeries(series);
-
     ui->Chart->setChart(chart);
     ui->Chart->setRenderHint(QPainter::Antialiasing);
 
@@ -160,14 +157,14 @@ void Monitor::DataReceived() {
                 ui->RawData->append(msg);
                 // 数据过滤
                 QStringList msgList = msg.split(",");
-                if(msgList.size()==2){
-                    for(auto & i : ChartList){
-                        if(i.ChartName == msgList[0]){
+                if (msgList.size() == 2) {
+                    for (auto &i: ChartList) {
+                        if (i.ChartName == msgList[0]) {
                             i.ChartData.append(msgList.at(1).toDouble());
                         }
                     }
                 }
-                for(auto & i : ChartList){
+                for (auto &i: ChartList) {
                     // 刷新Chart
                     while (i.ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
                         i.ChartData.removeFirst();
@@ -193,7 +190,7 @@ void Monitor::DataReceived() {
             }
             break;
         }
-        // COM
+            // COM
         case 1: {
             QByteArray data = serialPort->readLine();
             if (!data.isEmpty()) {
@@ -206,15 +203,15 @@ void Monitor::DataReceived() {
                 ui->RawData->insertPlainText(Serial_buff);
                 // 数据过滤
                 QStringList msgList = Serial_buff.split(",");
-                if(msgList.size()==2){
-                    for(auto & i : ChartList){
-                        if(i.ChartName == msgList[0]){
+                if (msgList.size() == 2) {
+                    for (auto &i: ChartList) {
+                        if (i.ChartName == msgList[0]) {
                             i.ChartData.append(msgList.at(1).toDouble());
                         }
                     }
                 }
                 Serial_buff.clear();
-                for(auto & i : ChartList) {
+                for (auto &i: ChartList) {
                     // 刷新Chart
                     while (i.ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
                         i.ChartData.removeFirst();
@@ -305,17 +302,24 @@ void Monitor::AddObserver() {
     auto *dialog = new ObserverDialog(this);
     int rtn = dialog->exec();
     if (rtn == QDialog::Accepted) {
+        // 规则命名检查
+        for (auto &i: ChartList) {
+            if (i.ChartName == dialog->name || i.ChartName == "") {
+                QMessageBox::warning(nullptr, "ERROR", "已添加相同名称的观察者");
+                return;
+            }
+        }
+        // 添加UI
         auto *WContainerItem = new QListWidgetItem(ui->ObservedList);
         WContainerItem->setSizeHint(QSize(40, 50));
         auto *WContainer = new ObserverItem(ui->ObservedList);
         WContainer->setItemName(dialog->name);
-        WContainer->setItemIndex(temp++);
         WContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(dialog->color));
         ui->ObservedList->setItemWidget(WContainerItem, WContainer);
-        //TODO 配合线的容器修改索引
-        ChartItem *chartitem = new ChartItem();
+        // 新建ChartItem
+        auto *chartitem = new ChartItem();
         chartitem->setName(dialog->name);
-
+        chartitem->ChartSeries->setColor(QColor(dialog->color));
         chart->addSeries(chartitem->ChartSeries);
         chart->createDefaultAxes();
         ChartList.append(*chartitem);
@@ -325,6 +329,15 @@ void Monitor::AddObserver() {
 
 // 删除一个观察者
 void Monitor::DeleteObserve() {
+    auto *checkBox = ui->ObservedList->itemWidget(ui->ObservedList->currentItem())->findChild<QCheckBox *>("checkBox");
+    qDebug() << checkBox->text();
+    for (int i = 0; i < ChartList.size(); i++) {
+        if (ChartList[i].ChartName == checkBox->text()) {
+            chart->removeSeries(ChartList[i].ChartSeries);
+            ChartList.removeAt(i);
+            break;
+        }
+    }
     ui->ObservedList->removeItemWidget(ui->ObservedList->currentItem());
     delete ui->ObservedList->currentItem();
 }

@@ -16,11 +16,11 @@ public:
     ~ObserverDialog();
 
     QString name = "";
-    QString color = "black";
+    QString color = "red";
 
 private:
     Ui::ObserverDialog *ui;
-    QList<QString> colorList = {"black", "red", "green", "blue", "cyan", "magenta", "yellow"};
+    QList<QString> colorList = {"red", "green", "blue", "cyan", "magenta", "yellow"};
 
 public slots:
 

@@ -48,11 +48,7 @@ private:
     int SourceMode = 0;
 
     QChart *chart;
-//    QList<double> ChartData;
-//    QList<double> CosChartData;
-//    QSplineSeries *series;
     QList<ChartItem> ChartList;
-
     QList<long> mBaudRateList = {115200, 57600, 38400, 19200, 9600};
 
     QLabel *StatusLabel;

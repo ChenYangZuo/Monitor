@@ -4,8 +4,8 @@
 ObserverDialog::ObserverDialog(QWidget *parent) : QDialog(parent), ui(new Ui::ObserverDialog) {
     ui->setupUi(this);
 
-    for (int i = 0; i < 7; i++) {
-        ui->comboBox->addItem(colorList[i]);
+    for (auto & i : colorList) {
+        ui->comboBox->addItem(i);
     }
 
 }
