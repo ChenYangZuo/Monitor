@@ -57,6 +57,7 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     connect(ui->ChartSettings, SIGNAL(triggered()), this, SLOT(SetChart()));
     connect(ui->DataIn,SIGNAL(triggered()),this,SLOT(LoadSettings()));
     connect(ui->DataOut,SIGNAL(triggered()),this,SLOT(SaveSettings()));
+    connect(ui->GenerateShot,SIGNAL(triggered()),this,SLOT(GenerateShot()));
     connect(ui->AboutMenu, SIGNAL(triggered()), this, SLOT(About()));
 
     // 置状态栏信息
@@ -433,4 +434,13 @@ void Monitor::SaveSettings(){
     file.close();
 
     QMessageBox::information(this,"Monitor","保存设置成功");
+}
+
+// 生成截图
+void Monitor::GenerateShot(){
+    QPixmap p = ui->Chart->grab();
+    QImage img = p.toImage();
+    QString path = QFileDialog::getSaveFileName(this,"Save as","/","PNG(*.png)");
+    img.save(path);
+    QMessageBox::information(this,"Monitor","截图已生成");
 }

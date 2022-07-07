@@ -80,6 +80,8 @@ public slots:
     void SaveSettings();
 
     void LoadSettings();
+
+    void GenerateShot();
 };
 
 #endif // MONITOR_H
