@@ -517,6 +517,10 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCharts/qxyseries.h
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/QDeadlineTimer
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/QEvent
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/QFile
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonArray
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument
+ mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/QList
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/QMargins
  mdp:E:/Qt/5.15.2/mingw81_64/include/QtCore/QMetaType

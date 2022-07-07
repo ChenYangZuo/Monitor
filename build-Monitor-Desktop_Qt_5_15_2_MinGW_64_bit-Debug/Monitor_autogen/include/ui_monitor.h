@@ -342,8 +342,8 @@ public:
     void retranslateUi(QMainWindow *Monitor)
     {
         Monitor->setWindowTitle(QCoreApplication::translate("Monitor", "MainWindow", nullptr));
-        DataIn->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\205\245\346\225\260\346\215\256", nullptr));
-        DataOut->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\207\272\346\225\260\346\215\256", nullptr));
+        DataIn->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\205\245\350\256\276\347\275\256", nullptr));
+        DataOut->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\207\272\350\256\276\347\275\256", nullptr));
         AboutMenu->setText(QCoreApplication::translate("Monitor", "\345\205\263\344\272\216", nullptr));
         GenerateShot->setText(QCoreApplication::translate("Monitor", "\347\224\237\346\210\220\346\210\252\345\233\276", nullptr));
         ChartSettings->setText(QCoreApplication::translate("Monitor", "\347\224\273\345\270\203\350\256\276\347\275\256", nullptr));

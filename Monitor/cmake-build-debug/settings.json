@@ -1,0 +1,17 @@
+{
+    "CHART": [
+        {
+            "COLOR": "red",
+            "NAME": "11"
+        }
+    ],
+    "CHART_ADAPTER_ON": true,
+    "COM_BaudRate": -1313194080,
+    "COM_PortName": "",
+    "MAX_FIX_X": 100,
+    "MAX_FIX_Y": 50,
+    "MIN_FIX_Y": -50,
+    "Source": 0,
+    "UDP_IP": "127.0.0.1",
+    "UDP_PORT": 5555
+}

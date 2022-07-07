@@ -8,6 +8,10 @@ void ChartItem::setName(QString name){
     ChartName = name;
 }
 
+void ChartItem::setColor(QString color) {
+    ChartColor = color;
+}
+
 void ChartItem::setChartData(QList<double> data){
     ChartData = data;
 }

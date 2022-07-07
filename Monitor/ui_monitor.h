@@ -34,7 +34,8 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Monitor {
+class Ui_Monitor
+{
 public:
     QAction *DataIn;
     QAction *DataOut;
@@ -83,7 +84,8 @@ public:
     QMenu *menu_3;
     QStatusBar *statusbar;
 
-    void setupUi(QMainWindow *Monitor) {
+    void setupUi(QMainWindow *Monitor)
+    {
         if (Monitor->objectName().isEmpty())
             Monitor->setObjectName(QString::fromUtf8("Monitor"));
         Monitor->resize(1064, 671);
@@ -337,31 +339,25 @@ public:
         QMetaObject::connectSlotsByName(Monitor);
     } // setupUi
 
-    void retranslateUi(QMainWindow *Monitor) {
+    void retranslateUi(QMainWindow *Monitor)
+    {
         Monitor->setWindowTitle(QCoreApplication::translate("Monitor", "MainWindow", nullptr));
-        DataIn->setText(
-                QCoreApplication::translate("Monitor", "\345\257\274\345\205\245\346\225\260\346\215\256", nullptr));
-        DataOut->setText(
-                QCoreApplication::translate("Monitor", "\345\257\274\345\207\272\346\225\260\346\215\256", nullptr));
+        DataIn->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\205\245\350\256\276\347\275\256", nullptr));
+        DataOut->setText(QCoreApplication::translate("Monitor", "\345\257\274\345\207\272\350\256\276\347\275\256", nullptr));
         AboutMenu->setText(QCoreApplication::translate("Monitor", "\345\205\263\344\272\216", nullptr));
-        GenerateShot->setText(
-                QCoreApplication::translate("Monitor", "\347\224\237\346\210\220\346\210\252\345\233\276", nullptr));
-        ChartSettings->setText(
-                QCoreApplication::translate("Monitor", "\347\224\273\345\270\203\350\256\276\347\275\256", nullptr));
-        DataSourceLabel->setText(
-                QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\272\220", nullptr));
+        GenerateShot->setText(QCoreApplication::translate("Monitor", "\347\224\237\346\210\220\346\210\252\345\233\276", nullptr));
+        ChartSettings->setText(QCoreApplication::translate("Monitor", "\347\224\273\345\270\203\350\256\276\347\275\256", nullptr));
+        DataSourceLabel->setText(QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\272\220", nullptr));
         COMLabel->setText(QCoreApplication::translate("Monitor", "COM\345\217\243", nullptr));
         BaudrateLabel->setText(QCoreApplication::translate("Monitor", "\346\263\242\347\211\271\347\216\207", nullptr));
         SourceDetailLabel->setText(QCoreApplication::translate("Monitor", "\346\217\217\350\277\260", nullptr));
         IPAddressLabel->setText(QCoreApplication::translate("Monitor", "IP\345\234\260\345\235\200", nullptr));
         PortLabel->setText(QCoreApplication::translate("Monitor", "\347\253\257\345\217\243", nullptr));
         ConnectButton->setText(QCoreApplication::translate("Monitor", "\350\277\236\346\216\245", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(SourceTab),
-                              QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\272\220", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(SourceTab), QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\272\220", nullptr));
         AddButton->setText(QString());
         DeleteButton->setText(QString());
-        tabWidget->setTabText(tabWidget->indexOf(ObserverTab),
-                              QCoreApplication::translate("Monitor", "\350\247\202\345\257\237", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(ObserverTab), QCoreApplication::translate("Monitor", "\350\247\202\345\257\237", nullptr));
         menu->setTitle(QCoreApplication::translate("Monitor", "\346\226\207\344\273\266", nullptr));
         menu_2->setTitle(QCoreApplication::translate("Monitor", "\346\223\215\344\275\234", nullptr));
         menu_3->setTitle(QCoreApplication::translate("Monitor", "\345\270\256\345\212\251", nullptr));
@@ -370,8 +366,7 @@ public:
 };
 
 namespace Ui {
-    class Monitor : public Ui_Monitor {
-    };
+    class Monitor: public Ui_Monitor {};
 } // namespace Ui
 
 QT_END_NAMESPACE

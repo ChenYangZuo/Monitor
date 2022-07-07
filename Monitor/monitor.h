@@ -15,6 +15,10 @@
 #include <QtCharts/QChartView>
 #include <QtCharts/QSplineSeries>
 #include <QListWidget>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QFile>
 #include "chartitem.h"
 
 QT_BEGIN_NAMESPACE
@@ -26,7 +30,6 @@ Q_OBJECT
 
 public:
     Monitor(QWidget *parent = nullptr);
-
     ~Monitor();
 
     bool CHART_ADAPTER_ON = true;
@@ -34,10 +37,7 @@ public:
     int MAX_FIX_X = 100;
     int MAX_FIX_Y = 50;
     int MIN_FIX_Y = -50;
-
 private:
-    int temp = 0;
-
     Ui::Monitor *ui;
     QList<QSerialPortInfo> serialPortInfos;
     QSerialPort *serialPort;
@@ -45,15 +45,18 @@ private:
     QUdpSocket *udpSocket;
 
     bool isConnected = false;
-    int port = 5555;
     int SourceMode = 0;
+
+    QString UDP_ip = "127.0.0.1";
+    int UDP_port = 5555;
+    QString COM_PortName = "";
+    int COM_BaudRate = 9600;
 
     QChart *chart;
     QList<ChartItem> ChartList;
     QList<long> mBaudRateList = {115200, 57600, 38400, 19200, 9600};
 
     QLabel *StatusLabel;
-
 public slots:
 
     void btn_connect();
@@ -73,6 +76,10 @@ public slots:
     void CheckBoxChanged(int);
 
     void About();
+
+    void SaveSettings();
+
+    void LoadSettings();
 };
 
 #endif // MONITOR_H

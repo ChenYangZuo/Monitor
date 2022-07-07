@@ -33,7 +33,7 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     ui->SourceDetail->setText(QString("[%1]%2").arg(serialPortInfo.manufacturer(), serialPortInfo.description()));
     connect(ui->COMList, SIGNAL(currentIndexChanged(int)), this, SLOT(COMChanged(int)));
     // 设置UDP默认信息
-    ui->IPAddressEdit->setText("127.0.0.1");
+    ui->IPAddressEdit->setText(UDP_ip);
     ui->PortEdit->setMinimum(0);
     ui->PortEdit->setMaximum(65535);
     ui->PortEdit->setValue(5555);
@@ -55,12 +55,13 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     connect(ui->AddButton, SIGNAL(clicked()), this, SLOT(AddObserver()));
     connect(ui->DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteObserve()));
     connect(ui->ChartSettings, SIGNAL(triggered()), this, SLOT(SetChart()));
+    connect(ui->DataIn,SIGNAL(triggered()),this,SLOT(LoadSettings()));
+    connect(ui->DataOut,SIGNAL(triggered()),this,SLOT(SaveSettings()));
     connect(ui->AboutMenu, SIGNAL(triggered()), this, SLOT(About()));
 
     // 置状态栏信息
     StatusLabel = new QLabel("Ready.");
     statusBar()->addPermanentWidget(StatusLabel, 1);
-
 }
 
 Monitor::~Monitor() {
@@ -74,14 +75,15 @@ void Monitor::btn_connect() {
         // UDP
         case 0: {
             if (!isConnected) {
-                port = ui->PortEdit->value();
-                udpSocket->bind(port);
+                UDP_port = ui->PortEdit->value();
+                UDP_ip = ui->IPAddressEdit->text();
+                udpSocket->bind(UDP_port);
                 bool result = connect(udpSocket, SIGNAL(readyRead()), this, SLOT(DataReceived()));
                 if (!result) {
                     QMessageBox::information(this, QString("ERROR"), QString("UDP Socket Create ERROR!"));
                     return;
                 }
-                StatusLabel->setText(QString("IP:%1 Port:%2 Connected.").arg(ui->IPAddressEdit->text()).arg(port));
+                StatusLabel->setText(QString("IP:%1 Port:%2 Connected.").arg(UDP_ip).arg(UDP_port));
                 ui->ConnectButton->setText(QString("Disconnect"));
 
                 ui->DataSourceList->setEnabled(false);
@@ -103,11 +105,13 @@ void Monitor::btn_connect() {
             }
             break;
         }
-            // COM
+        // COM
         case 1: {
             if (!isConnected) {
-                serialPort->setPortName(ui->COMList->currentText());
-                serialPort->setBaudRate(mBaudRateList[ui->BaudrateList->currentIndex()]);
+                COM_PortName = ui->COMList->currentText();
+                COM_BaudRate = mBaudRateList[ui->BaudrateList->currentIndex()];
+                serialPort->setPortName(COM_PortName);
+                serialPort->setBaudRate(COM_BaudRate);
                 serialPort->setParity(QSerialPort::NoParity);
                 serialPort->setDataBits(QSerialPort::Data8);
                 serialPort->setStopBits(QSerialPort::OneStop);
@@ -285,6 +289,10 @@ void Monitor::SetChart() {
     int rtn = dialog->exec();
     if (rtn == QDialog::Accepted) {
         CHART_ADAPTER_ON = dialog->adaptive;
+        if(chart->axes(Qt::Horizontal).empty() || chart->axes(Qt::Vertical).empty()){
+            QMessageBox::warning(nullptr, "WARNING", "请先添加观察者");
+            return;
+        }
         if (!CHART_ADAPTER_ON) {
             MAX_FIX_X = dialog->MAX_X;
             MAX_FIX_Y = dialog->MAX_Y;
@@ -322,7 +330,8 @@ void Monitor::AddObserver() {
         // 新建ChartItem
         auto *chartitem = new ChartItem();
         chartitem->setName(dialog->name);
-        chartitem->ChartSeries->setColor(QColor(dialog->color));
+        chartitem->setColor(dialog->color);
+        chartitem->ChartSeries->setColor(QColor(chartitem->ChartColor));
         chartitem->start();
         chart->addSeries(chartitem->ChartSeries);
         chart->createDefaultAxes();
@@ -372,4 +381,56 @@ void Monitor::CheckBoxChanged(int a){
             }
         }
     }
+}
+
+// 读入Json设置
+void Monitor::LoadSettings(){
+    qDebug()<<"Loading...";
+    QFile file("settings.json");
+    file.open(QFile::ReadOnly);
+    QJsonDocument mJsonDoc = QJsonDocument::fromJson(file.readAll());
+    QJsonObject mJson = mJsonDoc.object();
+    CHART_ADAPTER_ON = mJson.value("CHART_ADAPTER_ON").toBool();
+    MAX_FIX_X = mJson.value("MAX_FIX_X").toVariant().toInt();
+    MAX_FIX_Y = mJson.value("MAX_FIX_Y").toVariant().toInt();
+    MIN_FIX_Y = mJson.value("MIN_FIX_Y").toVariant().toInt();
+
+    QMessageBox::information(this,"Monitor","加载设置成功");
+}
+
+// 导出Json设置
+void Monitor::SaveSettings(){
+    qDebug()<<"Saving...";
+    QJsonObject mJson;
+    //Window Size
+    mJson.insert("CHART_ADAPTER_ON",CHART_ADAPTER_ON);
+    mJson.insert("MAX_FIX_X",MAX_FIX_X);
+    mJson.insert("MAX_FIX_Y",MAX_FIX_Y);
+    mJson.insert("MIN_FIX_Y",MIN_FIX_Y);
+    //Source Config
+    mJson.insert("Source",SourceMode);
+    //UDP Config
+    mJson.insert("UDP_IP",UDP_ip);
+    mJson.insert("UDP_PORT",UDP_port);
+    //COM Config
+    mJson.insert("COM_PortName",COM_PortName);
+    mJson.insert("COM_BaudRate",COM_BaudRate);
+    //ObserverList
+    QJsonArray sub;
+    for(auto & i : ChartList){
+        QJsonObject pchart;
+        pchart.insert("NAME",i.ChartName);
+        pchart.insert("COLOR",i.ChartColor);
+        sub.append(pchart);
+    }
+    mJson.insert("CHART",sub);
+
+    QJsonDocument mJsonDoc(mJson);
+    QByteArray json = mJsonDoc.toJson();
+    QFile file("settings.json");
+    file.open(QFile::WriteOnly);
+    file.write(json);
+    file.close();
+
+    QMessageBox::information(this,"Monitor","保存设置成功");
 }
