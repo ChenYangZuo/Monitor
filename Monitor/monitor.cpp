@@ -44,14 +44,12 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     ui->BaudrateLabel->setVisible(false);
     ui->SourceDetail->setVisible(false);
     ui->SourceDetailLabel->setVisible(false);
-
-    connect(ui->ConnectButton, SIGNAL(clicked()), this, SLOT(btn_connect()));
-
     // 初始化图表
     chart = new QChart();
     ui->Chart->setChart(chart);
     ui->Chart->setRenderHint(QPainter::Antialiasing);
-
+    // 绑定槽
+    connect(ui->ConnectButton, SIGNAL(clicked()), this, SLOT(btn_connect()));
     connect(ui->AddButton, SIGNAL(clicked()), this, SLOT(AddObserver()));
     connect(ui->DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteObserve()));
     connect(ui->ChartSettings, SIGNAL(triggered()), this, SLOT(SetChart()));
@@ -59,7 +57,6 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     connect(ui->DataOut,SIGNAL(triggered()),this,SLOT(SaveSettings()));
     connect(ui->GenerateShot,SIGNAL(triggered()),this,SLOT(GenerateShot()));
     connect(ui->AboutMenu, SIGNAL(triggered()), this, SLOT(About()));
-
     // 置状态栏信息
     StatusLabel = new QLabel("Ready.");
     statusBar()->addPermanentWidget(StatusLabel, 1);
@@ -387,15 +384,57 @@ void Monitor::CheckBoxChanged(int a){
 // 读入Json设置
 void Monitor::LoadSettings(){
     qDebug()<<"Loading...";
+
     QFile file("settings.json");
     file.open(QFile::ReadOnly);
     QJsonDocument mJsonDoc = QJsonDocument::fromJson(file.readAll());
     QJsonObject mJson = mJsonDoc.object();
+    //Window Size
     CHART_ADAPTER_ON = mJson.value("CHART_ADAPTER_ON").toBool();
     MAX_FIX_X = mJson.value("MAX_FIX_X").toVariant().toInt();
     MAX_FIX_Y = mJson.value("MAX_FIX_Y").toVariant().toInt();
     MIN_FIX_Y = mJson.value("MIN_FIX_Y").toVariant().toInt();
-
+    //Source Config
+    SourceMode = mJson.value("Source").toVariant().toInt();
+    ui->DataSourceList->setCurrentIndex(SourceMode);
+    //UDP Config
+    UDP_ip = mJson.value("UDP_IP").toString();
+    UDP_port = mJson.value("UDP_PORT").toVariant().toInt();
+    //COM Config
+    COM_PortName = mJson.value("COM_PortName").toString();
+    COM_BaudRate = mJson.value("COM_BaudRate").toVariant().toInt();
+    ui->COMList->setCurrentText(COM_PortName);
+    ui->BaudrateList->setCurrentText(QString("%1").arg(COM_BaudRate));
+    //ObserverList
+    QJsonArray subObj = mJson.value("CHART").toArray();
+    for(auto && sub : subObj){
+        QString name = sub.toObject().value("NAME").toString();
+        QString color = sub.toObject().value("COLOR").toString();
+        // 添加UI
+        auto *WContainerItem = new QListWidgetItem(ui->ObservedList);
+        WContainerItem->setSizeHint(QSize(40, 50));
+        auto *WContainer = new ObserverItem(ui->ObservedList);
+        WContainer->checkBox->setChecked(true);
+        connect(WContainer->checkBox,SIGNAL(stateChanged(int)),this,SLOT(CheckBoxChanged(int)));
+        WContainer->setItemName(name);
+        WContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(color));
+        ui->ObservedList->setItemWidget(WContainerItem, WContainer);
+        // 新建ChartItem
+        auto *chartitem = new ChartItem();
+        chartitem->setName(name);
+        chartitem->setColor(color);
+        chartitem->ChartSeries->setColor(QColor(chartitem->ChartColor));
+        chartitem->start();
+        chart->addSeries(chartitem->ChartSeries);
+        chart->createDefaultAxes();
+        ChartList.append(*chartitem);
+    }
+    if (!CHART_ADAPTER_ON) {
+        chart->axes(Qt::Horizontal).first()->setRange(0, MAX_FIX_X);
+        chart->axes(Qt::Vertical).first()->setRange(MIN_FIX_Y, MAX_FIX_Y);
+    } else {
+        chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
+    }
     QMessageBox::information(this,"Monitor","加载设置成功");
 }
 

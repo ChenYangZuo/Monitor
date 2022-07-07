@@ -3,11 +3,19 @@
         {
             "COLOR": "red",
             "NAME": "SIN"
+        },
+        {
+            "COLOR": "cyan",
+            "NAME": "COS"
+        },
+        {
+            "COLOR": "yellow",
+            "NAME": "TAN"
         }
     ],
     "CHART_ADAPTER_ON": false,
     "COM_BaudRate": 9600,
-    "COM_PortName": "COM4",
+    "COM_PortName": "COM3",
     "MAX_FIX_X": 200,
     "MAX_FIX_Y": 50,
     "MIN_FIX_Y": -30,
