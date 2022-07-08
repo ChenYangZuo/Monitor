@@ -7,6 +7,7 @@
 #include "observerdialog.h"
 #include "chartitem.h"
 
+// 初始化
 Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     // 初始化UI
     ui->setupUi(this);
@@ -81,6 +82,14 @@ void Monitor::btn_connect() {
                     QMessageBox::information(this, QString("ERROR"), QString("UDP Socket Create ERROR!"));
                     return;
                 }
+                CSV_Filename = QString("./rawdata/raw-%1.csv").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd-HH-mm-ss"));
+                CSV_File.setFileName(CSV_Filename);
+                if (CSV_File.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text)) {
+                    QTextStream in(&CSV_File);
+                    QString strText("");
+                    strText = QString("Time,") + QString("Data");
+                    in << strText << "/n";
+                }
                 StatusLabel->setText(QString("IP:%1 Port:%2 Connected.").arg(UDP_ip).arg(UDP_port));
                 ui->ConnectButton->setText(QString("Disconnect"));
 
@@ -92,6 +101,7 @@ void Monitor::btn_connect() {
             } else {
                 udpSocket->close();
                 disconnect(udpSocket, SIGNAL(readyRead()));
+                CSV_File.close();
                 ui->ConnectButton->setText(QString("Connect"));
                 StatusLabel->setText(QString("Ready."));
 
@@ -119,6 +129,14 @@ void Monitor::btn_connect() {
                     QMessageBox::information(this, QString("ERROR"), QString("COM Connect Create ERROR!"));
                     return;
                 }
+                CSV_Filename = QString("./rawdata/raw-%1.csv").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd-HH-mm-ss"));
+                CSV_File.setFileName(CSV_Filename);
+                if (CSV_File.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text)) {
+                    QTextStream in(&CSV_File);
+                    QString strText("");
+                    strText = QString("Time,") + QString("Data");
+                    in << strText << '\n';
+                }
                 connect(serialPort, SIGNAL(readyRead()), this, SLOT(DataReceived()));
                 StatusLabel->setText(QString("%1 BaudRate:%2 Connected.").arg(ui->COMList->currentText()).arg(
                         mBaudRateList[ui->BaudrateList->currentIndex()]));
@@ -132,6 +150,7 @@ void Monitor::btn_connect() {
             } else {
                 serialPort->close();
                 disconnect(serialPort, SIGNAL(readyRead()));
+                CSV_File.close();
                 ui->ConnectButton->setText(QString("Connect"));
                 StatusLabel->setText(QString("Ready."));
                 ui->DataSourceList->setEnabled(true);
@@ -157,7 +176,11 @@ void Monitor::DataReceived() {
                 datagram.resize(int(udpSocket->pendingDatagramSize()));
                 udpSocket->readDatagram(datagram.data(), datagram.size());
                 QString msg = datagram.data();
-                ui->RawData->append(msg);
+                QString CurrentTime = QTime::currentTime().toString("HH:mm:ss.zzz");
+                ui->RawData->append(QString("[%1]%2").arg(CurrentTime,msg));
+                QTextStream in(&CSV_File);
+                QString strMessage = QString(u8"%1,%2").arg(CurrentTime,msg);
+                in << strMessage << '\n';
                 // 数据过滤
                 QStringList msgList = msg.split(",");
                 if (msgList.size() == 2) {
@@ -193,7 +216,7 @@ void Monitor::DataReceived() {
             }
             break;
         }
-            // COM
+        // COM
         case 1: {
             QByteArray data = serialPort->readLine();
             if (!data.isEmpty()) {
@@ -204,6 +227,11 @@ void Monitor::DataReceived() {
                     return;
                 }
                 ui->RawData->insertPlainText(Serial_buff);
+                QString CurrentTime = QTime::currentTime().toString("HH:mm:ss.zzz");
+                ui->RawData->append(QString("[%1]%2").arg(CurrentTime,Serial_buff));
+                QTextStream in(&CSV_File);
+                QString strMessage = QString(u8"%1,%2").arg(CurrentTime,Serial_buff);
+                in << strMessage << '\n';
                 // 数据过滤
                 QStringList msgList = Serial_buff.split(",");
                 if (msgList.size() == 2) {
@@ -311,8 +339,12 @@ void Monitor::AddObserver() {
     if (rtn == QDialog::Accepted) {
         // 规则命名检查
         for (auto &i: ChartList) {
-            if (i.ChartName == dialog->name || i.ChartName == "") {
+            if (i.ChartName == dialog->name) {
                 QMessageBox::warning(nullptr, "ERROR", "已添加相同名称的观察者");
+                return;
+            }
+            if(i.ChartName == ""){
+                QMessageBox::warning(nullptr, "ERROR", "观察者名称不能为空");
                 return;
             }
         }
@@ -355,7 +387,7 @@ void Monitor::DeleteObserve() {
 
 // 关于界面
 void Monitor::About() {
-    QMessageBox::about(this, "About", "\nHangZhouDianZiUniversity\nZZZCY");
+    QMessageBox::about(this, "About", "\nHangzhouDianziUniversity\nZZZCY");
 }
 
 // 观察者可视变化
@@ -410,6 +442,9 @@ void Monitor::LoadSettings(){
     for(auto && sub : subObj){
         QString name = sub.toObject().value("NAME").toString();
         QString color = sub.toObject().value("COLOR").toString();
+        if(!RuleCheck_Name(name)){
+            continue;
+        }
         // 添加UI
         auto *WContainerItem = new QListWidgetItem(ui->ObservedList);
         WContainerItem->setSizeHint(QSize(40, 50));
@@ -482,4 +517,15 @@ void Monitor::GenerateShot(){
     QString path = QFileDialog::getSaveFileName(this,"Save as","/","PNG(*.png)");
     img.save(path);
     QMessageBox::information(this,"Monitor","截图已生成");
+}
+
+// 命名规则检查
+bool Monitor::RuleCheck_Name(const QString& name){
+    // 规则命名检查
+    for (auto &i: ChartList) {
+        if (i.ChartName == name) {
+            return false;
+        }
+    }
+    return true;
 }

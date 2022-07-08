@@ -44,6 +44,9 @@ private:
     QString Serial_buff = "";
     QUdpSocket *udpSocket;
 
+    QString CSV_Filename;
+    QFile CSV_File;
+
     bool isConnected = false;
     int SourceMode = 0;
 
@@ -82,6 +85,8 @@ public slots:
     void LoadSettings();
 
     void GenerateShot();
+
+    bool RuleCheck_Name(const QString&);
 };
 
 #endif // MONITOR_H

@@ -7,9 +7,14 @@
 	"INCLUDE_DIR" : "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/include",
 	"INPUTS" : 
 	[
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/save.png",
 		"C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.png",
 		"C:/Users/zuo-c/Desktop/Monitor/Monitor/edit.png",
-		"C:/Users/zuo-c/Desktop/Monitor/Monitor/delete.png"
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/about.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/delete.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/shot.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/load.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/settings.png"
 	],
 	"LOCK_FILE" : "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/Monitor_autogen.dir/AutoRcc_Monitor_Resource_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,

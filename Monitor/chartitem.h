@@ -13,6 +13,7 @@ public:
     QString ChartColor;
     QList<double> ChartData;
     QSplineSeries *ChartSeries;
+//    QLineSeries *ChartSeries;
 
     void setName(QString);
     void setColor(QString);

@@ -34,7 +34,7 @@
            </size>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="SourceTab">
            <attribute name="title">
@@ -366,28 +366,63 @@
    </property>
   </widget>
   <action name="DataIn">
+   <property name="icon">
+    <iconset resource="Monitor_Resource.qrc">
+     <normaloff>:/load.png</normaloff>:/load.png</iconset>
+   </property>
    <property name="text">
     <string>导入设置</string>
    </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="DataOut">
+   <property name="icon">
+    <iconset resource="Monitor_Resource.qrc">
+     <normaloff>:/save.png</normaloff>:/save.png</iconset>
+   </property>
    <property name="text">
     <string>导出设置</string>
    </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="AboutMenu">
+   <property name="icon">
+    <iconset resource="Monitor_Resource.qrc">
+     <normaloff>:/about.png</normaloff>:/about.png</iconset>
+   </property>
    <property name="text">
     <string>关于</string>
    </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="GenerateShot">
+   <property name="icon">
+    <iconset resource="Monitor_Resource.qrc">
+     <normaloff>:/shot.png</normaloff>:/shot.png</iconset>
+   </property>
    <property name="text">
     <string>生成截图</string>
    </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="ChartSettings">
+   <property name="icon">
+    <iconset resource="Monitor_Resource.qrc">
+     <normaloff>:/settings.png</normaloff>:/settings.png</iconset>
+   </property>
    <property name="text">
     <string>画布设置</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
    </property>
   </action>
  </widget>

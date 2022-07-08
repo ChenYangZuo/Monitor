@@ -3,6 +3,10 @@
         {
             "COLOR": "red",
             "NAME": "SIN"
+        },
+        {
+            "COLOR": "green",
+            "NAME": "TAN"
         }
     ],
     "CHART_ADAPTER_ON": false,
