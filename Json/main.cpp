@@ -25,12 +25,7 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
     qDebug()<<"Hello,World!";
 
-    QList<double> testList;
-    for(int i=0;i<100;i++){
-        test_List(testList,i);
-    }
-
-    qDebug()<<testList;
+    FIR_Lowpass_Filter();
 
     qDebug()<<"Goodbye,World!";
 
@@ -156,6 +151,7 @@ void WriteCSV(){
 
 void FIR_Lowpass_Filter(){
     QList<double> testInput;
+    QList<double> buffer;
 
     QFile file("TEST.txt");
     file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text);
@@ -171,12 +167,17 @@ void FIR_Lowpass_Filter(){
     file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text);
     QTextStream fil(&file);
 
-    QLibrary myLib("libfilter_fir.dll");
-    typedef double (*FunDef)(double); //需要声明函数原型的类型
+    QLibrary myLib("./libfilter_fir.so");
+    if(!myLib.load()){
+        qDebug() << "load library failed";
+        qDebug() << myLib.errorString();
+        return;
+    }
+    typedef double (*FunDef)(QList<double>&,double); //需要声明函数原型的类型
     FunDef filter_fir=(FunDef)myLib.resolve("filter_fir"); //解析DLL中的函数
 
     for(int i=0;i<testInput.size();i++){
-        fil << filter_fir(testInput.at(i)) << '\n';
+        fil << filter_fir(buffer,testInput.at(i)) << '\n';
     }
     file.close();
 
@@ -200,8 +201,6 @@ void test_ADD(){
     else{
         qDebug() << myLib.errorString();
     }
-//    int V=L_ADD(2,3);//调用函数
-//    qDebug()<<V;
 }
 
 void test_List(QList<double>& a, double b){

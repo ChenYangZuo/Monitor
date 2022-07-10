@@ -1,13 +1,12 @@
 #include "filter_fir.h"
-#include <QList>
 #include <cmath>
 #include <complex>
 #include <QFile>
 #include <QDir>
 #include <QCoreApplication>
+#include <QDebug>
 
-double filter_fir(double data){
-    QList<double> buffer;
+double filter_fir(QList<double>& buffer, double data){
     QList<double> B = {
         0.01371888807641,  0.04088447702935, 0.002712877770901, -0.01457739134178,
         0.006641859048837, -0.03012145345071, -0.05578417902593,  0.02234928048926,
@@ -21,6 +20,7 @@ double filter_fir(double data){
 
     buffer.append(data);
     if(buffer.size()<B.size()){
+        qDebug() << buffer.size();
         return 0;
     }
     while(buffer.size()>B.size()){
