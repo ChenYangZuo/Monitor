@@ -529,3 +529,41 @@ bool Monitor::RuleCheck_Name(const QString& name){
     }
     return true;
 }
+
+
+void Monitor::on_ObservedList_customContextMenuRequested(const QPoint &pos) {
+    QListWidgetItem* curItem = ui->ObservedList->itemAt(pos);
+    auto *checkBox = ui->ObservedList->itemWidget(curItem)->findChild<QCheckBox *>("checkBox");
+    qDebug() << checkBox->text();
+
+    QMenu *popMenu = new QMenu( this );
+    QAction *deleteSeed = new QAction(tr("Delete"), this);
+    QAction *clearSeeds = new QAction(tr("Clear"), this);
+    popMenu->addAction( deleteSeed );
+    popMenu->addAction( clearSeeds );
+    connect(deleteSeed, SIGNAL(triggered()), this, SLOT(deleteSeedSlot()));
+//    connect(clearSeeds, SIGNAL(triggered()), this, SLOT(clearSeedsSlot()));
+    popMenu->exec( QCursor::pos() );
+    delete popMenu;
+    delete deleteSeed;
+    delete clearSeeds;
+}
+
+void Monitor::deleteSeedSlot()
+{
+    int ch = QMessageBox::warning(NULL, "Warning",
+                                  "Are you sure to delete seed ?",
+                                  QMessageBox::Yes | QMessageBox::No,
+                                  QMessageBox::No);
+
+    if ( ch != QMessageBox::Yes )
+        return;
+
+    QListWidgetItem * item = ui->ObservedList->currentItem();
+    if( item == NULL )
+        return;
+
+    int curIndex = ui->ObservedList->row(item);
+    ui->ObservedList->takeItem(curIndex);
+    delete item;
+}

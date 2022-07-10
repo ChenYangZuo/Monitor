@@ -258,7 +258,11 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
-             <widget class="QListWidget" name="ObservedList"/>
+             <widget class="QListWidget" name="ObservedList">
+              <property name="contextMenuPolicy">
+               <enum>Qt::CustomContextMenu</enum>
+              </property>
+             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -333,7 +337,7 @@
      <x>0</x>
      <y>0</y>
      <width>1064</width>
-     <height>26</height>
+     <height>32</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

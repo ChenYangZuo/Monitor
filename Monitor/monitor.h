@@ -87,6 +87,11 @@ public slots:
     void GenerateShot();
 
     bool RuleCheck_Name(const QString&);
+
+    void deleteSeedSlot();
+
+private slots:
+    void on_ObservedList_customContextMenuRequested(const QPoint &pos);
 };
 
 #endif // MONITOR_H
