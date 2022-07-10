@@ -91,14 +91,34 @@ public:
         Monitor->resize(1064, 671);
         DataIn = new QAction(Monitor);
         DataIn->setObjectName(QString::fromUtf8("DataIn"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/load.png"), QSize(), QIcon::Normal, QIcon::Off);
+        DataIn->setIcon(icon);
+        DataIn->setIconVisibleInMenu(true);
         DataOut = new QAction(Monitor);
         DataOut->setObjectName(QString::fromUtf8("DataOut"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        DataOut->setIcon(icon1);
+        DataOut->setIconVisibleInMenu(true);
         AboutMenu = new QAction(Monitor);
         AboutMenu->setObjectName(QString::fromUtf8("AboutMenu"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/about.png"), QSize(), QIcon::Normal, QIcon::Off);
+        AboutMenu->setIcon(icon2);
+        AboutMenu->setIconVisibleInMenu(true);
         GenerateShot = new QAction(Monitor);
         GenerateShot->setObjectName(QString::fromUtf8("GenerateShot"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/shot.png"), QSize(), QIcon::Normal, QIcon::Off);
+        GenerateShot->setIcon(icon3);
+        GenerateShot->setIconVisibleInMenu(true);
         ChartSettings = new QAction(Monitor);
         ChartSettings->setObjectName(QString::fromUtf8("ChartSettings"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        ChartSettings->setIcon(icon4);
+        ChartSettings->setIconVisibleInMenu(true);
         centralwidget = new QWidget(Monitor);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout_5 = new QVBoxLayout(centralwidget);
@@ -260,18 +280,18 @@ public:
         AddButton = new QToolButton(ObserverTab);
         AddButton->setObjectName(QString::fromUtf8("AddButton"));
         AddButton->setMinimumSize(QSize(32, 32));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        AddButton->setIcon(icon);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        AddButton->setIcon(icon5);
 
         horizontalLayout_15->addWidget(AddButton);
 
         DeleteButton = new QToolButton(ObserverTab);
         DeleteButton->setObjectName(QString::fromUtf8("DeleteButton"));
         DeleteButton->setMinimumSize(QSize(32, 32));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        DeleteButton->setIcon(icon1);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        DeleteButton->setIcon(icon6);
 
         horizontalLayout_15->addWidget(DeleteButton);
 
@@ -333,7 +353,7 @@ public:
 
         retranslateUi(Monitor);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Monitor);

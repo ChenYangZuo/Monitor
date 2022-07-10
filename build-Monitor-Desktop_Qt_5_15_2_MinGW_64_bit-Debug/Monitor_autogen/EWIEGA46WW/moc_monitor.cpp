@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Monitor_t {
-    QByteArrayData data[14];
-    char stringdata0[155];
+    QByteArrayData data[15];
+    char stringdata0[170];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,14 +45,15 @@ QT_MOC_LITERAL(9, 94, 15), // "CheckBoxChanged"
 QT_MOC_LITERAL(10, 110, 5), // "About"
 QT_MOC_LITERAL(11, 116, 12), // "SaveSettings"
 QT_MOC_LITERAL(12, 129, 12), // "LoadSettings"
-QT_MOC_LITERAL(13, 142, 12) // "GenerateShot"
+QT_MOC_LITERAL(13, 142, 12), // "GenerateShot"
+QT_MOC_LITERAL(14, 155, 14) // "RuleCheck_Name"
 
     },
     "Monitor\0btn_connect\0\0DataReceived\0"
     "COMChanged\0SourceChanged\0SetChart\0"
     "AddObserver\0DeleteObserve\0CheckBoxChanged\0"
     "About\0SaveSettings\0LoadSettings\0"
-    "GenerateShot"
+    "GenerateShot\0RuleCheck_Name"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,7 +63,7 @@ static const uint qt_meta_data_Monitor[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,18 +71,19 @@ static const uint qt_meta_data_Monitor[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   74,    2, 0x0a /* Public */,
-       3,    0,   75,    2, 0x0a /* Public */,
-       4,    1,   76,    2, 0x0a /* Public */,
-       5,    1,   79,    2, 0x0a /* Public */,
-       6,    0,   82,    2, 0x0a /* Public */,
-       7,    0,   83,    2, 0x0a /* Public */,
-       8,    0,   84,    2, 0x0a /* Public */,
-       9,    1,   85,    2, 0x0a /* Public */,
-      10,    0,   88,    2, 0x0a /* Public */,
-      11,    0,   89,    2, 0x0a /* Public */,
-      12,    0,   90,    2, 0x0a /* Public */,
-      13,    0,   91,    2, 0x0a /* Public */,
+       1,    0,   79,    2, 0x0a /* Public */,
+       3,    0,   80,    2, 0x0a /* Public */,
+       4,    1,   81,    2, 0x0a /* Public */,
+       5,    1,   84,    2, 0x0a /* Public */,
+       6,    0,   87,    2, 0x0a /* Public */,
+       7,    0,   88,    2, 0x0a /* Public */,
+       8,    0,   89,    2, 0x0a /* Public */,
+       9,    1,   90,    2, 0x0a /* Public */,
+      10,    0,   93,    2, 0x0a /* Public */,
+      11,    0,   94,    2, 0x0a /* Public */,
+      12,    0,   95,    2, 0x0a /* Public */,
+      13,    0,   96,    2, 0x0a /* Public */,
+      14,    1,   97,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -96,6 +98,7 @@ static const uint qt_meta_data_Monitor[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Bool, QMetaType::QString,    2,
 
        0        // eod
 };
@@ -118,6 +121,8 @@ void Monitor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 9: _t->SaveSettings(); break;
         case 10: _t->LoadSettings(); break;
         case 11: _t->GenerateShot(); break;
+        case 12: { bool _r = _t->RuleCheck_Name((*reinterpret_cast< const QString(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -152,13 +157,13 @@ int Monitor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }

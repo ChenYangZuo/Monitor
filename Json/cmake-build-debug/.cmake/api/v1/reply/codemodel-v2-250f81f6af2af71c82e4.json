@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.5"
+						"string" : "3.14"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -29,7 +29,7 @@
 					[
 						0
 					],
-					"name" : "Monitor",
+					"name" : "Json",
 					"targetIndexes" : 
 					[
 						0,
@@ -42,23 +42,23 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "Monitor::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Monitor-Debug-ac8dc3004ad6700291b0.json",
-					"name" : "Monitor",
+					"id" : "Json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Json-Debug-39dc0ac109c4e72ff31e.json",
+					"name" : "Json",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "Monitor_autogen::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Monitor_autogen-Debug-a6c9478a9b368feb4cdc.json",
-					"name" : "Monitor_autogen",
+					"id" : "Json_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Json_autogen-Debug-d6efeebabcf7e3ad37e4.json",
+					"name" : "Json_autogen",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "Monitor_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Monitor_autogen_timestamp_deps-Debug-233b54e853849d050af9.json",
-					"name" : "Monitor_autogen_timestamp_deps",
+					"id" : "Json_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Json_autogen_timestamp_deps-Debug-9293e3ed69e36f161f6c.json",
+					"name" : "Json_autogen_timestamp_deps",
 					"projectIndex" : 0
 				}
 			]
@@ -67,8 +67,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug",
-		"source" : "C:/Users/zuo-c/Desktop/Monitor/Monitor"
+		"build" : "D:/Project/QtDevelopment/Json/cmake-build-debug",
+		"source" : "D:/Project/QtDevelopment/Json"
 	},
 	"version" : 
 	{
