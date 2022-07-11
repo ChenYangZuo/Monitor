@@ -14,18 +14,26 @@ public:
 
     explicit ObserverItem(QWidget *parent = nullptr);
 
-    void setItemName(const QString &) const;
+    void setItemName(const QString&);
 
     void setItemIndex(int);
 
     void setItemColor(QString);
 
-    QCheckBox *checkBox = new QCheckBox();
+    void setCheckState(Qt::CheckState);
+
+    QString getItemName();
+
+    bool getCheckState();
+
+    QCheckBox * getCheckBox();
 
 private:
-    int mIndex = 0;
+    int itemIndex = 0;
+    QString itemName;
     QHBoxLayout *mainLayout = new QHBoxLayout;
-    QLabel *nameLabel = new QLabel();
+    QLabel *colorLabel = new QLabel();
+    QCheckBox *checkBox = new QCheckBox();
     QString mStyle = QString("QLabel{background-color:blue;}");
 };
 

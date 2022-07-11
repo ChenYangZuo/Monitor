@@ -1,11 +1,11 @@
 #include <QDebug>
 #include <QMessageBox>
+#include <QVariant>
 #include "monitor.h"
 #include "ui_monitor.h"
 #include "settingsdialog.h"
 #include "observeritem.h"
 #include "observerdialog.h"
-#include "chartitem.h"
 
 // 初始化
 Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
@@ -54,9 +54,9 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     connect(ui->AddButton, SIGNAL(clicked()), this, SLOT(AddObserver()));
     connect(ui->DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteObserve()));
     connect(ui->ChartSettings, SIGNAL(triggered()), this, SLOT(SetChart()));
-    connect(ui->DataIn,SIGNAL(triggered()),this,SLOT(LoadSettings()));
-    connect(ui->DataOut,SIGNAL(triggered()),this,SLOT(SaveSettings()));
-    connect(ui->GenerateShot,SIGNAL(triggered()),this,SLOT(GenerateShot()));
+    connect(ui->DataIn, SIGNAL(triggered()), this, SLOT(LoadSettings()));
+    connect(ui->DataOut, SIGNAL(triggered()), this, SLOT(SaveSettings()));
+    connect(ui->GenerateShot, SIGNAL(triggered()), this, SLOT(GenerateShot()));
     connect(ui->AboutMenu, SIGNAL(triggered()), this, SLOT(About()));
     // 置状态栏信息
     StatusLabel = new QLabel("Ready.");
@@ -82,7 +82,8 @@ void Monitor::btn_connect() {
                     QMessageBox::information(this, QString("ERROR"), QString("UDP Socket Create ERROR!"));
                     return;
                 }
-                CSV_Filename = QString("./rawdata/raw-%1.csv").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd-HH-mm-ss"));
+                CSV_Filename = QString("./rawdata/raw-%1.csv").arg(
+                        QDateTime::currentDateTime().toString("yyyy-MM-dd-HH-mm-ss"));
                 CSV_File.setFileName(CSV_Filename);
                 if (CSV_File.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text)) {
                     QTextStream in(&CSV_File);
@@ -113,7 +114,7 @@ void Monitor::btn_connect() {
             }
             break;
         }
-        // COM
+            // COM
         case 1: {
             if (!isConnected) {
                 COM_PortName = ui->COMList->currentText();
@@ -129,7 +130,8 @@ void Monitor::btn_connect() {
                     QMessageBox::information(this, QString("ERROR"), QString("COM Connect Create ERROR!"));
                     return;
                 }
-                CSV_Filename = QString("./rawdata/raw-%1.csv").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd-HH-mm-ss"));
+                CSV_Filename = QString("./rawdata/raw-%1.csv").arg(
+                        QDateTime::currentDateTime().toString("yyyy-MM-dd-HH-mm-ss"));
                 CSV_File.setFileName(CSV_Filename);
                 if (CSV_File.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text)) {
                     QTextStream in(&CSV_File);
@@ -177,15 +179,15 @@ void Monitor::DataReceived() {
                 udpSocket->readDatagram(datagram.data(), datagram.size());
                 QString msg = datagram.data();
                 QString CurrentTime = QTime::currentTime().toString("HH:mm:ss.zzz");
-                ui->RawData->append(QString("[%1]%2").arg(CurrentTime,msg));
+                ui->RawData->append(QString("[%1]%2").arg(CurrentTime, msg));
                 QTextStream in(&CSV_File);
-                QString strMessage = QString(u8"%1,%2").arg(CurrentTime,msg);
+                QString strMessage = QString(u8"%1,%2").arg(CurrentTime, msg);
                 in << strMessage << '\n';
                 // 数据过滤
                 QStringList msgList = msg.split(",");
                 if (msgList.size() == 2) {
                     for (auto &i: ChartList) {
-                        if (i.ChartName == msgList[0]) {
+                        if (i.getName() == msgList[0]) {
                             i.ChartData.append(msgList.at(1).toDouble());
                         }
                     }
@@ -216,7 +218,7 @@ void Monitor::DataReceived() {
             }
             break;
         }
-        // COM
+            // COM
         case 1: {
             QByteArray data = serialPort->readLine();
             if (!data.isEmpty()) {
@@ -228,15 +230,15 @@ void Monitor::DataReceived() {
                 }
                 ui->RawData->insertPlainText(Serial_buff);
                 QString CurrentTime = QTime::currentTime().toString("HH:mm:ss.zzz");
-                ui->RawData->append(QString("[%1]%2").arg(CurrentTime,Serial_buff));
+                ui->RawData->append(QString("[%1]%2").arg(CurrentTime, Serial_buff));
                 QTextStream in(&CSV_File);
-                QString strMessage = QString(u8"%1,%2").arg(CurrentTime,Serial_buff);
+                QString strMessage = QString(u8"%1,%2").arg(CurrentTime, Serial_buff);
                 in << strMessage << '\n';
                 // 数据过滤
                 QStringList msgList = Serial_buff.split(",");
                 if (msgList.size() == 2) {
                     for (auto &i: ChartList) {
-                        if (i.ChartName == msgList[0]) {
+                        if (i.getName() == msgList[0]) {
                             i.ChartData.append(msgList.at(1).toDouble());
                         }
                     }
@@ -315,7 +317,7 @@ void Monitor::SetChart() {
     int rtn = dialog->exec();
     if (rtn == QDialog::Accepted) {
         CHART_ADAPTER_ON = dialog->adaptive;
-        if(chart->axes(Qt::Horizontal).empty() || chart->axes(Qt::Vertical).empty()){
+        if (chart->axes(Qt::Horizontal).empty() || chart->axes(Qt::Vertical).empty()) {
             QMessageBox::warning(nullptr, "WARNING", "请先添加观察者");
             return;
         }
@@ -338,34 +340,36 @@ void Monitor::AddObserver() {
     int rtn = dialog->exec();
     if (rtn == QDialog::Accepted) {
         // 规则命名检查
-        for (auto &i: ChartList) {
-            if (i.ChartName == dialog->name) {
+        for(int i=0;i<ui->ObservedList->count();i++) {
+            if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName == dialog->name) {
                 QMessageBox::warning(nullptr, "ERROR", "已添加相同名称的观察者");
                 return;
             }
-            if(i.ChartName == ""){
+            if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName == "") {
                 QMessageBox::warning(nullptr, "ERROR", "观察者名称不能为空");
                 return;
             }
         }
-        // 添加UI
-        auto *WContainerItem = new QListWidgetItem(ui->ObservedList);
-        WContainerItem->setSizeHint(QSize(40, 50));
-        auto *WContainer = new ObserverItem(ui->ObservedList);
-        WContainer->checkBox->setChecked(true);
-        connect(WContainer->checkBox,SIGNAL(stateChanged(int)),this,SLOT(CheckBoxChanged(int)));
-        WContainer->setItemName(dialog->name);
-        WContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(dialog->color));
-        ui->ObservedList->setItemWidget(WContainerItem, WContainer);
+
         // 新建ChartItem
-        auto *chartitem = new ChartItem();
-        chartitem->setName(dialog->name);
-        chartitem->setColor(dialog->color);
-        chartitem->ChartSeries->setColor(QColor(chartitem->ChartColor));
-        chartitem->start();
-        chart->addSeries(chartitem->ChartSeries);
+        struct ChartItem chartitem;
+        chartitem.ChartName = dialog->name;
+        chartitem.ChartColor = dialog->color;
+        chartitem.ChartSeries->setColor(QColor(chartitem.ChartColor));
+        chartitem.ChartVisible = true;
+        chart->addSeries(chartitem.ChartSeries);
         chart->createDefaultAxes();
-        ChartList.append(*chartitem);
+
+        // 添加UI
+        auto *WidgetContainerItem = new QListWidgetItem(ui->ObservedList);
+        WidgetContainerItem->setSizeHint(QSize(40, 50));
+        auto *WidgetContainer = new ObserverItem(ui->ObservedList);
+        WidgetContainer->setCheckState(Qt::Checked);
+        connect(WidgetContainer->getCheckBox(), SIGNAL(stateChanged(int)), this, SLOT(CheckBoxChanged(int)));
+        WidgetContainer->setItemName(dialog->name);
+        WidgetContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(dialog->color));
+        ui->ObservedList->setItemWidget(WidgetContainerItem, WidgetContainer);
+        WidgetContainerItem->setData(Qt::UserRole,QVariant::fromValue(chartitem));
     }
     delete dialog;
 }
@@ -374,8 +378,9 @@ void Monitor::AddObserver() {
 void Monitor::DeleteObserve() {
     auto *checkBox = ui->ObservedList->itemWidget(ui->ObservedList->currentItem())->findChild<QCheckBox *>("checkBox");
     qDebug() << checkBox->text();
+
     for (int i = 0; i < ChartList.size(); i++) {
-        if (ChartList[i].ChartName == checkBox->text()) {
+        if (ChartList[i].getName() == checkBox->text()) {
             chart->removeSeries(ChartList[i].ChartSeries);
             ChartList.removeAt(i);
             break;
@@ -391,20 +396,21 @@ void Monitor::About() {
 }
 
 // 观察者可视变化
-void Monitor::CheckBoxChanged(int a){
-    qDebug()<<"CHANGED!";
-    for(int i=0;i<ui->ObservedList->count();i++){
-        if(ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>("checkBox")->isChecked()){
+void Monitor::CheckBoxChanged(int a) {
+    qDebug() << "CHANGED!";
+    for (int i = 0; i < ui->ObservedList->count(); i++) {
+        if (ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>("checkBox")->isChecked()) {
             for (auto &j: ChartList) {
-                if (j.ChartName == ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>("checkBox")->text()) {
+                if (j.getName() == ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>(
+                        "checkBox")->text()) {
                     j.start();
                     chart->addSeries(j.ChartSeries);
                 }
             }
-        }
-        else{
+        } else {
             for (auto &j: ChartList) {
-                if (j.ChartName == ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>("checkBox")->text()) {
+                if (j.getName() == ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>(
+                        "checkBox")->text()) {
                     j.finish();
                     chart->removeSeries(j.ChartSeries);
                 }
@@ -414,8 +420,8 @@ void Monitor::CheckBoxChanged(int a){
 }
 
 // 读入Json设置
-void Monitor::LoadSettings(){
-    qDebug()<<"Loading...";
+void Monitor::LoadSettings() {
+    qDebug() << "Loading...";
 
     QFile file("settings.json");
     file.open(QFile::ReadOnly);
@@ -439,18 +445,18 @@ void Monitor::LoadSettings(){
     ui->BaudrateList->setCurrentText(QString("%1").arg(COM_BaudRate));
     //ObserverList
     QJsonArray subObj = mJson.value("CHART").toArray();
-    for(auto && sub : subObj){
+    for (auto &&sub: subObj) {
         QString name = sub.toObject().value("NAME").toString();
         QString color = sub.toObject().value("COLOR").toString();
-        if(!RuleCheck_Name(name)){
+        if (!RuleCheck_Name(name)) {
             continue;
         }
         // 添加UI
         auto *WContainerItem = new QListWidgetItem(ui->ObservedList);
         WContainerItem->setSizeHint(QSize(40, 50));
         auto *WContainer = new ObserverItem(ui->ObservedList);
-        WContainer->checkBox->setChecked(true);
-        connect(WContainer->checkBox,SIGNAL(stateChanged(int)),this,SLOT(CheckBoxChanged(int)));
+        WContainer->setCheckState(Qt::Checked);
+        connect(WContainer->getCheckBox(), SIGNAL(stateChanged(int)), this, SLOT(CheckBoxChanged(int)));
         WContainer->setItemName(name);
         WContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(color));
         ui->ObservedList->setItemWidget(WContainerItem, WContainer);
@@ -458,7 +464,7 @@ void Monitor::LoadSettings(){
         auto *chartitem = new ChartItem();
         chartitem->setName(name);
         chartitem->setColor(color);
-        chartitem->ChartSeries->setColor(QColor(chartitem->ChartColor));
+        chartitem->ChartSeries->setColor(QColor(chartitem->getColor()));
         chartitem->start();
         chart->addSeries(chartitem->ChartSeries);
         chart->createDefaultAxes();
@@ -470,35 +476,35 @@ void Monitor::LoadSettings(){
     } else {
         chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
     }
-    QMessageBox::information(this,"Monitor","加载设置成功");
+    QMessageBox::information(this, "Monitor", "加载设置成功");
 }
 
 // 导出Json设置
-void Monitor::SaveSettings(){
-    qDebug()<<"Saving...";
+void Monitor::SaveSettings() {
+    qDebug() << "Saving...";
     QJsonObject mJson;
     //Window Size
-    mJson.insert("CHART_ADAPTER_ON",CHART_ADAPTER_ON);
-    mJson.insert("MAX_FIX_X",MAX_FIX_X);
-    mJson.insert("MAX_FIX_Y",MAX_FIX_Y);
-    mJson.insert("MIN_FIX_Y",MIN_FIX_Y);
+    mJson.insert("CHART_ADAPTER_ON", CHART_ADAPTER_ON);
+    mJson.insert("MAX_FIX_X", MAX_FIX_X);
+    mJson.insert("MAX_FIX_Y", MAX_FIX_Y);
+    mJson.insert("MIN_FIX_Y", MIN_FIX_Y);
     //Source Config
-    mJson.insert("Source",SourceMode);
+    mJson.insert("Source", SourceMode);
     //UDP Config
-    mJson.insert("UDP_IP",UDP_ip);
-    mJson.insert("UDP_PORT",UDP_port);
+    mJson.insert("UDP_IP", UDP_ip);
+    mJson.insert("UDP_PORT", UDP_port);
     //COM Config
-    mJson.insert("COM_PortName",COM_PortName);
-    mJson.insert("COM_BaudRate",COM_BaudRate);
+    mJson.insert("COM_PortName", COM_PortName);
+    mJson.insert("COM_BaudRate", COM_BaudRate);
     //ObserverList
     QJsonArray sub;
-    for(auto & i : ChartList){
+    for (auto &i: ChartList) {
         QJsonObject pchart;
-        pchart.insert("NAME",i.ChartName);
-        pchart.insert("COLOR",i.ChartColor);
+        pchart.insert("NAME", i.getName());
+        pchart.insert("COLOR", i.getColor());
         sub.append(pchart);
     }
-    mJson.insert("CHART",sub);
+    mJson.insert("CHART", sub);
 
     QJsonDocument mJsonDoc(mJson);
     QByteArray json = mJsonDoc.toJson();
@@ -507,60 +513,58 @@ void Monitor::SaveSettings(){
     file.write(json);
     file.close();
 
-    QMessageBox::information(this,"Monitor","保存设置成功");
+    QMessageBox::information(this, "Monitor", "保存设置成功");
 }
 
 // 生成截图
-void Monitor::GenerateShot(){
+void Monitor::GenerateShot() {
     QPixmap p = ui->Chart->grab();
     QImage img = p.toImage();
-    QString path = QFileDialog::getSaveFileName(this,"Save as","/","PNG(*.png)");
+    QString path = QFileDialog::getSaveFileName(this, "Save as", "/", "PNG(*.png)");
     img.save(path);
-    QMessageBox::information(this,"Monitor","截图已生成");
+    QMessageBox::information(this, "Monitor", "截图已生成");
 }
 
 // 命名规则检查
-bool Monitor::RuleCheck_Name(const QString& name){
+bool Monitor::RuleCheck_Name(const QString &name) {
     // 规则命名检查
     for (auto &i: ChartList) {
-        if (i.ChartName == name) {
+        if (i.getName() == name) {
             return false;
         }
     }
     return true;
 }
 
-
 void Monitor::on_ObservedList_customContextMenuRequested(const QPoint &pos) {
-    QListWidgetItem* curItem = ui->ObservedList->itemAt(pos);
+    QListWidgetItem *curItem = ui->ObservedList->itemAt(pos);
     auto *checkBox = ui->ObservedList->itemWidget(curItem)->findChild<QCheckBox *>("checkBox");
+
     qDebug() << checkBox->text();
 
-    QMenu *popMenu = new QMenu( this );
-    QAction *deleteSeed = new QAction(tr("Delete"), this);
-    QAction *clearSeeds = new QAction(tr("Clear"), this);
-    popMenu->addAction( deleteSeed );
-    popMenu->addAction( clearSeeds );
+    auto *popMenu = new QMenu(this);
+    auto *deleteSeed = new QAction(tr("Delete"), this);
+    auto *clearSeeds = new QAction(tr("Clear"), this);
+    popMenu->addAction(deleteSeed);
+    popMenu->addAction(clearSeeds);
     connect(deleteSeed, SIGNAL(triggered()), this, SLOT(deleteSeedSlot()));
-//    connect(clearSeeds, SIGNAL(triggered()), this, SLOT(clearSeedsSlot()));
-    popMenu->exec( QCursor::pos() );
+    popMenu->exec(QCursor::pos());
     delete popMenu;
     delete deleteSeed;
     delete clearSeeds;
 }
 
-void Monitor::deleteSeedSlot()
-{
-    int ch = QMessageBox::warning(NULL, "Warning",
+void Monitor::deleteSeedSlot() {
+    int ch = QMessageBox::warning(nullptr, "Warning",
                                   "Are you sure to delete seed ?",
                                   QMessageBox::Yes | QMessageBox::No,
                                   QMessageBox::No);
 
-    if ( ch != QMessageBox::Yes )
+    if (ch != QMessageBox::Yes)
         return;
 
-    QListWidgetItem * item = ui->ObservedList->currentItem();
-    if( item == NULL )
+    QListWidgetItem *item = ui->ObservedList->currentItem();
+    if (item == nullptr)
         return;
 
     int curIndex = ui->ObservedList->row(item);

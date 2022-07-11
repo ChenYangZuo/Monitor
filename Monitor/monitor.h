@@ -19,7 +19,6 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QFile>
-#include "chartitem.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Monitor; }
@@ -56,7 +55,6 @@ private:
     int COM_BaudRate = 9600;
 
     QChart *chart;
-    QList<ChartItem> ChartList;
     QList<long> mBaudRateList = {115200, 57600, 38400, 19200, 9600};
 
     QLabel *StatusLabel;
@@ -93,5 +91,14 @@ public slots:
 private slots:
     void on_ObservedList_customContextMenuRequested(const QPoint &pos);
 };
+
+struct ChartItem{
+    QList<double> ChartData;
+    QSplineSeries *ChartSeries;
+    QString ChartName;
+    QString ChartColor;
+    bool ChartVisible = false;
+};
+Q_DECLARE_METATYPE(ChartItem)
 
 #endif // MONITOR_H
