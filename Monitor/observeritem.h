@@ -16,24 +16,19 @@ public:
 
     void setItemName(const QString&);
 
-    void setItemIndex(int);
-
     void setItemColor(QString);
 
     void setCheckState(Qt::CheckState);
 
     QString getItemName();
 
-    bool getCheckState();
-
-    QCheckBox * getCheckBox();
+    QCheckBox *checkBox = new QCheckBox();
 
 private:
-    int itemIndex = 0;
     QString itemName;
     QHBoxLayout *mainLayout = new QHBoxLayout;
     QLabel *colorLabel = new QLabel();
-    QCheckBox *checkBox = new QCheckBox();
+
     QString mStyle = QString("QLabel{background-color:blue;}");
 };
 

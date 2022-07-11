@@ -185,31 +185,38 @@ void Monitor::DataReceived() {
                 in << strMessage << '\n';
                 // 数据过滤
                 QStringList msgList = msg.split(",");
+                // 插入数据
                 if (msgList.size() == 2) {
-                    for (auto &i: ChartList) {
-                        if (i.getName() == msgList[0]) {
-                            i.ChartData.append(msgList.at(1).toDouble());
+                    for(int i=0;i<ui->ObservedList->count();i++) {
+                        if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName == msgList[0]) {
+                            qDebug()<<ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName;
+                            auto item = ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>();
+                            item.ChartData.append(msgList[1].toDouble());
+                            ui->ObservedList->item(i)->setData(Qt::UserRole,QVariant::fromValue(item));
                         }
+                        qDebug()<<ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData;
                     }
                 }
-                for (auto &i: ChartList) {
-                    // 刷新Chart
-                    while (i.ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
-                        i.ChartData.removeFirst();
+                // 刷新Chart
+                for(int i=0;i<ui->ObservedList->count();i++){
+                    while (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
+                        ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.removeFirst();
                     }
-                    // 图表自适应大小
-                    i.ChartSeries->clear();
+                    ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartSeries->clear();
                     double max = 0;
                     double min = 0;
-                    for (int j = 0; j < i.ChartData.size(); ++j) {
-                        if (i.ChartData.at(j) > max) {
-                            max = i.ChartData.at(j);
+                    for (int j = 0; j < ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.size(); ++j) {
+                        // 取最值
+                        if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j) > max) {
+                            max = ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j);
                         }
-                        if (i.ChartData.at(j) < min) {
-                            min = i.ChartData.at(j);
+                        if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j) < min) {
+                            min = ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j);
                         }
-                        i.ChartSeries->append(j, i.ChartData.at(j));
+                        // 刷入数据
+                        ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartSeries->append(j, ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j));
                     }
+                    // 图表自适应大小
                     chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
                     if (CHART_ADAPTER_ON) {
                         chart->axes(Qt::Vertical).first()->setRange(min - 10, max + 10);
@@ -218,7 +225,7 @@ void Monitor::DataReceived() {
             }
             break;
         }
-            // COM
+        // COM
         case 1: {
             QByteArray data = serialPort->readLine();
             if (!data.isEmpty()) {
@@ -237,30 +244,34 @@ void Monitor::DataReceived() {
                 // 数据过滤
                 QStringList msgList = Serial_buff.split(",");
                 if (msgList.size() == 2) {
-                    for (auto &i: ChartList) {
-                        if (i.getName() == msgList[0]) {
-                            i.ChartData.append(msgList.at(1).toDouble());
+                    for(int i=0;i<ui->ObservedList->count();i++) {
+                        if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName == msgList[0]) {
+                            qDebug()<<ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName;
+                            auto item = ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>();
+                            item.ChartData.append(msgList[1].toDouble());
+                            ui->ObservedList->item(i)->setData(Qt::UserRole,QVariant::fromValue(item));
                         }
+                        qDebug()<<ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData;
                     }
                 }
                 Serial_buff.clear();
-                for (auto &i: ChartList) {
+                for(int i=0;i<ui->ObservedList->count();i++){
                     // 刷新Chart
-                    while (i.ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
-                        i.ChartData.removeFirst();
+                    while (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
+                        ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.removeFirst();
                     }
                     // 图表自适应大小
-                    i.ChartSeries->clear();
+                    ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartSeries->clear();
                     double max = 0;
                     double min = 0;
-                    for (int j = 0; j < i.ChartData.size(); ++j) {
-                        if (i.ChartData.at(j) > max) {
-                            max = i.ChartData.at(j);
+                    for (int j = 0; j < ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.size(); ++j) {
+                        if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j) > max) {
+                            max = ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j);
                         }
-                        if (i.ChartData.at(j) < min) {
-                            min = i.ChartData.at(j);
+                        if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j) < min) {
+                            min = ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j);
                         }
-                        i.ChartSeries->append(j, i.ChartData.at(j));
+                        ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartSeries->append(j, ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.at(j));
                     }
                     chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
                     if (CHART_ADAPTER_ON) {
@@ -350,24 +361,27 @@ void Monitor::AddObserver() {
                 return;
             }
         }
+        qDebug()<<"[AddObserver] PASS NAME CHECK.";
 
         // 新建ChartItem
         struct ChartItem chartitem;
         chartitem.ChartName = dialog->name;
         chartitem.ChartColor = dialog->color;
-        chartitem.ChartSeries->setColor(QColor(chartitem.ChartColor));
         chartitem.ChartVisible = true;
+        chartitem.ChartSeries->setColor(QColor(chartitem.ChartColor));
+        qDebug()<<"[AddObserver] INIT NEW CHART.";
         chart->addSeries(chartitem.ChartSeries);
         chart->createDefaultAxes();
+        qDebug()<<"[AddObserver] CREATE NEW CHART.";
 
         // 添加UI
         auto *WidgetContainerItem = new QListWidgetItem(ui->ObservedList);
         WidgetContainerItem->setSizeHint(QSize(40, 50));
         auto *WidgetContainer = new ObserverItem(ui->ObservedList);
         WidgetContainer->setCheckState(Qt::Checked);
-        connect(WidgetContainer->getCheckBox(), SIGNAL(stateChanged(int)), this, SLOT(CheckBoxChanged(int)));
         WidgetContainer->setItemName(dialog->name);
         WidgetContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(dialog->color));
+        connect(WidgetContainer->checkBox, SIGNAL(stateChanged(int)), this, SLOT(CheckBoxChanged(int)));
         ui->ObservedList->setItemWidget(WidgetContainerItem, WidgetContainer);
         WidgetContainerItem->setData(Qt::UserRole,QVariant::fromValue(chartitem));
     }
@@ -376,16 +390,8 @@ void Monitor::AddObserver() {
 
 // 删除一个观察者
 void Monitor::DeleteObserve() {
-    auto *checkBox = ui->ObservedList->itemWidget(ui->ObservedList->currentItem())->findChild<QCheckBox *>("checkBox");
-    qDebug() << checkBox->text();
-
-    for (int i = 0; i < ChartList.size(); i++) {
-        if (ChartList[i].getName() == checkBox->text()) {
-            chart->removeSeries(ChartList[i].ChartSeries);
-            ChartList.removeAt(i);
-            break;
-        }
-    }
+    qDebug()<<ui->ObservedList->currentItem()->data(Qt::UserRole).value<ChartItem>().ChartName;
+    chart->removeSeries(ui->ObservedList->currentItem()->data(Qt::UserRole).value<ChartItem>().ChartSeries);
     ui->ObservedList->removeItemWidget(ui->ObservedList->currentItem());
     delete ui->ObservedList->currentItem();
 }
@@ -397,24 +403,21 @@ void Monitor::About() {
 
 // 观察者可视变化
 void Monitor::CheckBoxChanged(int a) {
-    qDebug() << "CHANGED!";
+    qDebug() << "VISIBLE CHANGED!";
     for (int i = 0; i < ui->ObservedList->count(); i++) {
+        // 可视
         if (ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>("checkBox")->isChecked()) {
-            for (auto &j: ChartList) {
-                if (j.getName() == ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>(
-                        "checkBox")->text()) {
-                    j.start();
-                    chart->addSeries(j.ChartSeries);
-                }
-            }
-        } else {
-            for (auto &j: ChartList) {
-                if (j.getName() == ui->ObservedList->itemWidget(ui->ObservedList->item(i))->findChild<QCheckBox *>(
-                        "checkBox")->text()) {
-                    j.finish();
-                    chart->removeSeries(j.ChartSeries);
-                }
-            }
+            auto item = ui->ObservedList->currentItem()->data(Qt::UserRole).value<ChartItem>();
+            item.ChartVisible = true;
+            chart->addSeries(item.ChartSeries);
+            ui->ObservedList->currentItem()->setData(Qt::UserRole,QVariant::fromValue(item));
+        }
+        // 隐藏
+        else {
+            auto item = ui->ObservedList->currentItem()->data(Qt::UserRole).value<ChartItem>();
+            item.ChartVisible = false;
+            chart->removeSeries(item.ChartSeries);
+            ui->ObservedList->currentItem()->setData(Qt::UserRole,QVariant::fromValue(item));
         }
     }
 }
@@ -427,23 +430,23 @@ void Monitor::LoadSettings() {
     file.open(QFile::ReadOnly);
     QJsonDocument mJsonDoc = QJsonDocument::fromJson(file.readAll());
     QJsonObject mJson = mJsonDoc.object();
-    //Window Size
+    // Window Size
     CHART_ADAPTER_ON = mJson.value("CHART_ADAPTER_ON").toBool();
     MAX_FIX_X = mJson.value("MAX_FIX_X").toVariant().toInt();
     MAX_FIX_Y = mJson.value("MAX_FIX_Y").toVariant().toInt();
     MIN_FIX_Y = mJson.value("MIN_FIX_Y").toVariant().toInt();
-    //Source Config
+    // Source Config
     SourceMode = mJson.value("Source").toVariant().toInt();
     ui->DataSourceList->setCurrentIndex(SourceMode);
-    //UDP Config
+    // UDP Config
     UDP_ip = mJson.value("UDP_IP").toString();
     UDP_port = mJson.value("UDP_PORT").toVariant().toInt();
-    //COM Config
+    // COM Config
     COM_PortName = mJson.value("COM_PortName").toString();
     COM_BaudRate = mJson.value("COM_BaudRate").toVariant().toInt();
     ui->COMList->setCurrentText(COM_PortName);
     ui->BaudrateList->setCurrentText(QString("%1").arg(COM_BaudRate));
-    //ObserverList
+    // ObserverList
     QJsonArray subObj = mJson.value("CHART").toArray();
     for (auto &&sub: subObj) {
         QString name = sub.toObject().value("NAME").toString();
@@ -451,31 +454,36 @@ void Monitor::LoadSettings() {
         if (!RuleCheck_Name(name)) {
             continue;
         }
-        // 添加UI
-        auto *WContainerItem = new QListWidgetItem(ui->ObservedList);
-        WContainerItem->setSizeHint(QSize(40, 50));
-        auto *WContainer = new ObserverItem(ui->ObservedList);
-        WContainer->setCheckState(Qt::Checked);
-        connect(WContainer->getCheckBox(), SIGNAL(stateChanged(int)), this, SLOT(CheckBoxChanged(int)));
-        WContainer->setItemName(name);
-        WContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(color));
-        ui->ObservedList->setItemWidget(WContainerItem, WContainer);
+
         // 新建ChartItem
-        auto *chartitem = new ChartItem();
-        chartitem->setName(name);
-        chartitem->setColor(color);
-        chartitem->ChartSeries->setColor(QColor(chartitem->getColor()));
-        chartitem->start();
-        chart->addSeries(chartitem->ChartSeries);
+        struct ChartItem chartitem;
+        chartitem.ChartName = name;
+        chartitem.ChartColor = color;
+        chartitem.ChartSeries->setColor(QColor(chartitem.ChartColor));
+        chartitem.ChartVisible = true;
+        chart->addSeries(chartitem.ChartSeries);
         chart->createDefaultAxes();
-        ChartList.append(*chartitem);
+
+        // 添加UI
+        auto *WidgetContainerItem = new QListWidgetItem(ui->ObservedList);
+        WidgetContainerItem->setSizeHint(QSize(40, 50));
+        auto *WidgetContainer = new ObserverItem(ui->ObservedList);
+        WidgetContainer->setCheckState(Qt::Checked);
+        connect(WidgetContainer->checkBox, SIGNAL(stateChanged(int)), this, SLOT(CheckBoxChanged(int)));
+        WidgetContainer->setItemName(name);
+        WidgetContainer->setItemColor(QString("QLabel{background-color:%1;}").arg(color));
+        ui->ObservedList->setItemWidget(WidgetContainerItem, WidgetContainer);
+        WidgetContainerItem->setData(Qt::UserRole,QVariant::fromValue(chartitem));
+
     }
+    // Window Size
     if (!CHART_ADAPTER_ON) {
         chart->axes(Qt::Horizontal).first()->setRange(0, MAX_FIX_X);
         chart->axes(Qt::Vertical).first()->setRange(MIN_FIX_Y, MAX_FIX_Y);
     } else {
         chart->axes(Qt::Horizontal).first()->setRange(0, MAX_ADA_X);
     }
+
     QMessageBox::information(this, "Monitor", "加载设置成功");
 }
 
@@ -498,12 +506,13 @@ void Monitor::SaveSettings() {
     mJson.insert("COM_BaudRate", COM_BaudRate);
     //ObserverList
     QJsonArray sub;
-    for (auto &i: ChartList) {
+    for(int i=0;i<ui->ObservedList->count();i++) {
         QJsonObject pchart;
-        pchart.insert("NAME", i.getName());
-        pchart.insert("COLOR", i.getColor());
+        pchart.insert("NAME", ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName);
+        pchart.insert("COLOR", ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartColor);
         sub.append(pchart);
     }
+
     mJson.insert("CHART", sub);
 
     QJsonDocument mJsonDoc(mJson);
@@ -523,17 +532,6 @@ void Monitor::GenerateShot() {
     QString path = QFileDialog::getSaveFileName(this, "Save as", "/", "PNG(*.png)");
     img.save(path);
     QMessageBox::information(this, "Monitor", "截图已生成");
-}
-
-// 命名规则检查
-bool Monitor::RuleCheck_Name(const QString &name) {
-    // 规则命名检查
-    for (auto &i: ChartList) {
-        if (i.getName() == name) {
-            return false;
-        }
-    }
-    return true;
 }
 
 void Monitor::on_ObservedList_customContextMenuRequested(const QPoint &pos) {
@@ -570,4 +568,13 @@ void Monitor::deleteSeedSlot() {
     int curIndex = ui->ObservedList->row(item);
     ui->ObservedList->takeItem(curIndex);
     delete item;
+}
+
+bool Monitor::RuleCheck_Name(const QString& name){
+    for(int i=0;i<ui->ObservedList->count();i++) {
+        if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName == name) {
+            return false;
+        }
+    }
+    return true;
 }

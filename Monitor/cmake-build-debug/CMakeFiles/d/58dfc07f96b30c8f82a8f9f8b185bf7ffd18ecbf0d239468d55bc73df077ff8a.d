@@ -449,8 +449,6 @@ Monitor_autogen/timestamp: \
   C:/Program\ Files/JetBrains/CLion\ 2021.3.3/bin/mingw/x86_64-w64-mingw32/include/wtypesbase.h \
   ../CMakeLists.txt \
   ../Monitor_Resource.qrc \
-  ../chartitem.cpp \
-  ../chartitem.h \
   CMakeFiles/3.22.3/CMakeCXXCompiler.cmake \
   CMakeFiles/3.22.3/CMakeRCCompiler.cmake \
   CMakeFiles/3.22.3/CMakeSystem.cmake \

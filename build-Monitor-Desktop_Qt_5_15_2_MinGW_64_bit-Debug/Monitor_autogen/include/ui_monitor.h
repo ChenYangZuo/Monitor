@@ -272,6 +272,7 @@ public:
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         ObservedList = new QListWidget(ObserverTab);
         ObservedList->setObjectName(QString::fromUtf8("ObservedList"));
+        ObservedList->setContextMenuPolicy(Qt::CustomContextMenu);
 
         verticalLayout_8->addWidget(ObservedList);
 
@@ -329,7 +330,7 @@ public:
         Monitor->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Monitor);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1064, 26));
+        menubar->setGeometry(QRect(0, 0, 1064, 32));
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         menu_2 = new QMenu(menubar);

@@ -84,17 +84,17 @@ public slots:
 
     void GenerateShot();
 
-    bool RuleCheck_Name(const QString&);
-
     void deleteSeedSlot();
+
+    bool RuleCheck_Name(const QString&);
 
 private slots:
     void on_ObservedList_customContextMenuRequested(const QPoint &pos);
 };
 
 struct ChartItem{
-    QList<double> ChartData;
-    QSplineSeries *ChartSeries;
+    QList<double> ChartData = QList<double>();
+    QSplineSeries *ChartSeries = new QSplineSeries();
     QString ChartName;
     QString ChartColor;
     bool ChartVisible = false;

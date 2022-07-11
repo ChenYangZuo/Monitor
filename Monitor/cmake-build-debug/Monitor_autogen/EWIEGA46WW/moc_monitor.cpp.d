@@ -430,7 +430,6 @@ C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/Monitor_autogen/EWIEGA4
   C:/Program\ Files/JetBrains/CLion\ 2021.3.3/bin/mingw/x86_64-w64-mingw32/include/wow64apiset.h \
   C:/Program\ Files/JetBrains/CLion\ 2021.3.3/bin/mingw/x86_64-w64-mingw32/include/wtypes.h \
   C:/Program\ Files/JetBrains/CLion\ 2021.3.3/bin/mingw/x86_64-w64-mingw32/include/wtypesbase.h \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/chartitem.h \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractAxis \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractBarSeries \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QAbstractSeries \
