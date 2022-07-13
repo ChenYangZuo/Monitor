@@ -30,7 +30,6 @@
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include "QtCharts.h"
 
 QT_BEGIN_NAMESPACE
 

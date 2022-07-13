@@ -9,7 +9,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -30,6 +30,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -69,10 +73,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\main.cpp"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Src\\main.cpp"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/main.cpp"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/main.cpp"
 },
 {
     "arguments": [
@@ -84,7 +88,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -105,6 +109,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -144,10 +152,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\monitor.cpp"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Src\\monitor.cpp"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.cpp"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/monitor.cpp"
 },
 {
     "arguments": [
@@ -159,7 +167,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -180,6 +188,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -219,10 +231,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\settingsdialog.cpp"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Src\\settingsdialog.cpp"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.cpp"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/settingsdialog.cpp"
 },
 {
     "arguments": [
@@ -234,7 +246,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -255,6 +267,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -294,10 +310,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\observeritem.cpp"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Src\\observeritem.cpp"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.cpp"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/observeritem.cpp"
 },
 {
     "arguments": [
@@ -309,7 +325,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -330,6 +346,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -369,10 +389,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\observerdialog.cpp"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Src\\observerdialog.cpp"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.cpp"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/observerdialog.cpp"
 },
 {
     "arguments": [
@@ -384,7 +404,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -405,6 +425,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -444,10 +468,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\filterdialog.cpp"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Src\\filterdialog.cpp"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.cpp"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/filterdialog.cpp"
 },
 {
     "arguments": [
@@ -459,7 +483,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -480,6 +504,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -519,10 +547,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\monitor.h"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc\\monitor.h"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.h"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/monitor.h"
 },
 {
     "arguments": [
@@ -534,7 +562,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -555,6 +583,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -594,10 +626,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\settingsdialog.h"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc\\settingsdialog.h"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/settingsdialog.h"
 },
 {
     "arguments": [
@@ -609,7 +641,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -630,6 +662,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -669,10 +705,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\observeritem.h"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc\\observeritem.h"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/observeritem.h"
 },
 {
     "arguments": [
@@ -684,7 +720,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -705,6 +741,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -744,10 +784,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\observerdialog.h"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc\\observerdialog.h"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.h"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/observerdialog.h"
 },
 {
     "arguments": [
@@ -759,7 +799,7 @@
         "-I",
         "E:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-aeofIn\\clang-uiheader-skOdRz",
+        "C:\\Users\\zuo-c\\AppData\\Local\\Temp\\QtCreator-mimwAX\\clang-uiheader-iJblrI",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -780,6 +820,10 @@
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor",
         "-I",
         "C:\\Users\\zuo-c\\Desktop\\Monitor\\build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\Monitor_autogen\\include",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\ore\\Src",
+        "-I",
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc",
         "-I",
         "E:\\Qt\\5.15.2\\mingw81_64\\include",
         "-I",
@@ -819,9 +863,9 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\filterdialog.h"
+        "C:\\Users\\zuo-c\\Desktop\\Monitor\\Monitor\\Core\\Inc\\filterdialog.h"
     ],
     "directory": "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.h"
+    "file": "C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/filterdialog.h"
 }
 ]

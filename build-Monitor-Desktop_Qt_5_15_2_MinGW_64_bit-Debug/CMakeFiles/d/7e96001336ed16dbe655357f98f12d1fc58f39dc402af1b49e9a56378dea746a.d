@@ -1,17 +1,17 @@
 Monitor_autogen/timestamp: \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/CMakeLists.txt \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/Monitor_Resource.qrc \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.cpp \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.h \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/main.cpp \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.cpp \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.h \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.cpp \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.h \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.cpp \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.cpp \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/filterdialog.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/monitor.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/observerdialog.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/observeritem.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/settingsdialog.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/filterdialog.cpp \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/main.cpp \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/monitor.cpp \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/observerdialog.cpp \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/observeritem.cpp \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/settingsdialog.cpp \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/Monitor_Resource.qrc \
   CMakeFiles/3.21.1/CMakeCXXCompiler.cmake \
   CMakeFiles/3.21.1/CMakeRCCompiler.cmake \
   CMakeFiles/3.21.1/CMakeSystem.cmake \
@@ -29,13 +29,11 @@ Monitor_autogen/timestamp: \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QCandlestickSeries \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QChart \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QChartGlobal \
-  E:/Qt/5.15.2/mingw81_64/include/QtCharts/QChartView \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QLegend \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QLegendMarker \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QPieModelMapper \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QPieSeries \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QPieSlice \
-  E:/Qt/5.15.2/mingw81_64/include/QtCharts/QSplineSeries \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QValueAxis \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QXYModelMapper \
   E:/Qt/5.15.2/mingw81_64/include/QtCharts/QXYSeries \
@@ -1044,8 +1042,8 @@ Monitor_autogen/timestamp: \
   E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wow64apiset.h \
   E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wtypes.h \
   E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wtypesbase.h \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.ui \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.ui \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.ui \
-  C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.ui \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Forms/filterdialog.ui \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Forms/monitor.ui \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Forms/observerdialog.ui \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/Forms/settingsdialog.ui \
   E:/Qt/Tools/CMake_64/bin/cmake.exe

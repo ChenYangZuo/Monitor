@@ -1,4 +1,0 @@
-C:/Users/zuo-c/Desktop/Monitor/Monitor/build/CMakeFiles/Monitor.dir
-C:/Users/zuo-c/Desktop/Monitor/Monitor/build/CMakeFiles/edit_cache.dir
-C:/Users/zuo-c/Desktop/Monitor/Monitor/build/CMakeFiles/rebuild_cache.dir
-C:/Users/zuo-c/Desktop/Monitor/Monitor/build/CMakeFiles/Monitor_autogen.dir

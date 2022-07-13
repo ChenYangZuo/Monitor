@@ -73,7 +73,7 @@
 		"E:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5SerialPort/Qt5SerialPortConfig.cmake",
 		"E:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Charts/Qt5ChartsConfigVersion.cmake",
 		"E:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Charts/Qt5ChartsConfig.cmake",
-		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Monitor_Resource.qrc"
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/Monitor_Resource.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor",
 	"DEP_FILE" : "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Monitor_autogen/deps",
@@ -81,33 +81,33 @@
 	"HEADERS" : 
 	[
 		[
-			"C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.h",
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/filterdialog.h",
 			"MU",
-			"EWIEGA46WW/moc_filterdialog.cpp",
+			"3ATZPEMIIK/moc_filterdialog.cpp",
 			null
 		],
 		[
-			"C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.h",
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/monitor.h",
 			"MU",
-			"EWIEGA46WW/moc_monitor.cpp",
+			"3ATZPEMIIK/moc_monitor.cpp",
 			null
 		],
 		[
-			"C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.h",
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/observerdialog.h",
 			"MU",
-			"EWIEGA46WW/moc_observerdialog.cpp",
+			"3ATZPEMIIK/moc_observerdialog.cpp",
 			null
 		],
 		[
-			"C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.h",
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/observeritem.h",
 			"MU",
-			"EWIEGA46WW/moc_observeritem.cpp",
+			"3ATZPEMIIK/moc_observeritem.cpp",
 			null
 		],
 		[
-			"C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.h",
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc/settingsdialog.h",
 			"MU",
-			"EWIEGA46WW/moc_settingsdialog.cpp",
+			"3ATZPEMIIK/moc_settingsdialog.cpp",
 			null
 		]
 	],
@@ -134,6 +134,8 @@
 	[
 		"C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug",
 		"C:/Users/zuo-c/Desktop/Monitor/Monitor",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/ore/Src",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Inc",
 		"E:/Qt/5.15.2/mingw81_64/include",
 		"E:/Qt/5.15.2/mingw81_64/include/QtWidgets",
 		"E:/Qt/5.15.2/mingw81_64/include/QtGui",
@@ -174,23 +176,39 @@
 	"SETTINGS_FILE" : "C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/Monitor_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.cpp", "MU", null ],
-		[ "C:/Users/zuo-c/Desktop/Monitor/Monitor/main.cpp", "MU", null ],
-		[ "C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.cpp", "MU", null ],
 		[
-			"C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.cpp",
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/filterdialog.cpp",
 			"MU",
 			null
 		],
-		[ "C:/Users/zuo-c/Desktop/Monitor/Monitor/observeritem.cpp", "MU", null ],
 		[
-			"C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.cpp",
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/main.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/monitor.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/observerdialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/observeritem.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/zuo-c/Desktop/Monitor/Monitor/Core/Src/settingsdialog.cpp",
 			"MU",
 			null
 		]
 	],
 	"UIC_OPTIONS" : [],
-	"UIC_SEARCH_PATHS" : [],
+	"UIC_SEARCH_PATHS" : [ "C:/Users/zuo-c/Desktop/Monitor/Monitor/Forms" ],
 	"UIC_SKIP" : [],
 	"UIC_UI_FILES" : [],
 	"VERBOSITY" : 0
