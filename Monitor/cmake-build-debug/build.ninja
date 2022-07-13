@@ -180,7 +180,7 @@ build Monitor_autogen/timestamp Monitor_autogen/mocs_compilation.cpp | ${cmake_n
 #############################################
 # Custom command for Monitor_autogen\EWIEGA46WW\qrc_Monitor_Resource.cpp
 
-build Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp | ${cmake_ninja_workdir}Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp: CUSTOM_COMMAND ../Monitor_Resource.qrc CMakeFiles/Monitor_autogen.dir/AutoRcc_Monitor_Resource_EWIEGA46WW_Info.json ../save.png ../monitor.png ../edit.png ../about.png ../delete.png ../shot.png ../load.png ../settings.png E$:/Qt/5.15.2/mingw81_64/bin/rcc.exe || Monitor_autogen Monitor_autogen_timestamp_deps
+build Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp | ${cmake_ninja_workdir}Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp: CUSTOM_COMMAND ../Monitor_Resource.qrc CMakeFiles/Monitor_autogen.dir/AutoRcc_Monitor_Resource_EWIEGA46WW_Info.json ../save.png ../monitor.png ../edit.png ../filter.png ../about.png ../delete.png ../shot.png ../load.png ../settings.png E$:/Qt/5.15.2/mingw81_64/bin/rcc.exe || Monitor_autogen Monitor_autogen_timestamp_deps
   COMMAND = cmd.exe /C "cd /D C:\Users\zuo-c\Desktop\Monitor\Monitor\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E cmake_autorcc C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/CMakeFiles/Monitor_autogen.dir/AutoRcc_Monitor_Resource_EWIEGA46WW_Info.json Debug"
   DESC = Automatic RCC for Monitor_Resource.qrc
   restat = 1
@@ -189,7 +189,7 @@ build Monitor_autogen/EWIEGA46WW/qrc_Monitor_Resource.cpp | ${cmake_ninja_workdi
 #############################################
 # Phony custom command for CMakeFiles\Monitor_autogen_timestamp_deps
 
-build CMakeFiles/Monitor_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/Monitor_autogen_timestamp_deps: phony E$:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a E$:/Qt/5.15.2/mingw81_64/bin/uic.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a E$:/Qt/5.15.2/mingw81_64/bin/moc.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Charts.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5SerialPort.a
+build CMakeFiles/Monitor_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/Monitor_autogen_timestamp_deps: phony E$:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a E$:/Qt/5.15.2/mingw81_64/bin/uic.exe E$:/Qt/5.15.2/mingw81_64/bin/moc.exe E$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5Charts.a E$:/Qt/5.15.2/mingw81_64/lib/libQt5SerialPort.a
 
 
 #############################################

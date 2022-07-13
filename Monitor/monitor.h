@@ -19,10 +19,13 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QFile>
+#include <QLibrary>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Monitor; }
 QT_END_NAMESPACE
+
+typedef double (*FunDef)(QList<double>&,double); //需要声明函数原型的类型
 
 class Monitor : public QMainWindow {
 Q_OBJECT
@@ -74,6 +77,8 @@ public slots:
 
     void DeleteObserve();
 
+    void AddFilter();
+
     void CheckBoxChanged(int);
 
     void About();
@@ -84,20 +89,21 @@ public slots:
 
     void GenerateShot();
 
-    void deleteSeedSlot();
-
     bool RuleCheck_Name(const QString&);
 
-private slots:
-    void on_ObservedList_customContextMenuRequested(const QPoint &pos);
 };
 
 struct ChartItem{
     QList<double> ChartData = QList<double>();
     QSplineSeries *ChartSeries = new QSplineSeries();
-    QString ChartName;
-    QString ChartColor;
+    QString ChartName = "";
+    QString ChartColor = "";
     bool ChartVisible = false;
+    bool ChartFilter = false;
+    QString FilterDLL = "";
+    QLibrary *FilterLibrary = new QLibrary();
+    QList<double> FilterBuffer;
+    FunDef filter_fir;
 };
 Q_DECLARE_METATYPE(ChartItem)
 

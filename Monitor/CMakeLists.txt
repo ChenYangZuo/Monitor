@@ -21,7 +21,7 @@ set(PROJECT_SOURCES
         settingsdialog.h settingsdialog.cpp settingsdialog.ui
         observeritem.h observeritem.cpp
         observerdialog.h observerdialog.cpp observerdialog.ui
-#        chartitem.h chartitem.cpp
+        filterdialog.h filterdialog.cpp filterdialog.ui
         Monitor_Resource.qrc ICON.rc
         )
 

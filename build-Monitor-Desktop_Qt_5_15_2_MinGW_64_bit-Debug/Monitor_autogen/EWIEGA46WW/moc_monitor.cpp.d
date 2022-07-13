@@ -86,6 +86,7 @@ C:/Users/zuo-c/Desktop/Monitor/build-Monitor-Desktop_Qt_5_15_2_MinGW_64_bit-Debu
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonArray \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+  E:/Qt/5.15.2/mingw81_64/include/QtCore/QLibrary \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QList \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QMargins \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QMetaType \

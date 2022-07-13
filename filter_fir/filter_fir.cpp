@@ -20,7 +20,6 @@ double filter_fir(QList<double>& buffer, double data){
 
     buffer.append(data);
     if(buffer.size()<B.size()){
-        qDebug() << buffer.size();
         return 0;
     }
     while(buffer.size()>B.size()){

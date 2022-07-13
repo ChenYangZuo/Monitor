@@ -6,6 +6,9 @@
 #include "settingsdialog.h"
 #include "observeritem.h"
 #include "observerdialog.h"
+#include "filterdialog.h"
+
+double filter_fir(QList<double>& buffer, double data);
 
 // 初始化
 Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
@@ -53,6 +56,7 @@ Monitor::Monitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::Monitor) {
     connect(ui->ConnectButton, SIGNAL(clicked()), this, SLOT(btn_connect()));
     connect(ui->AddButton, SIGNAL(clicked()), this, SLOT(AddObserver()));
     connect(ui->DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteObserve()));
+    connect(ui->FilterButton,SIGNAL(clicked()), this, SLOT(AddFilter()));
     connect(ui->ChartSettings, SIGNAL(triggered()), this, SLOT(SetChart()));
     connect(ui->DataIn, SIGNAL(triggered()), this, SLOT(LoadSettings()));
     connect(ui->DataOut, SIGNAL(triggered()), this, SLOT(SaveSettings()));
@@ -189,18 +193,24 @@ void Monitor::DataReceived() {
                 if (msgList.size() == 2) {
                     for(int i=0;i<ui->ObservedList->count();i++) {
                         if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName == msgList[0]) {
-                            qDebug()<<ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName;
                             auto item = ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>();
-                            item.ChartData.append(msgList[1].toDouble());
+                            if (item.ChartFilter) {
+                                double result = item.filter_fir(item.FilterBuffer,msgList[1].toDouble());
+                                item.ChartData.append(result);
+                            }
+                            else{
+                                item.ChartData.append(msgList[1].toDouble());
+                            }
                             ui->ObservedList->item(i)->setData(Qt::UserRole,QVariant::fromValue(item));
                         }
-                        qDebug()<<ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData;
                     }
                 }
                 // 刷新Chart
                 for(int i=0;i<ui->ObservedList->count();i++){
                     while (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.size() > (CHART_ADAPTER_ON ? MAX_ADA_X : MAX_FIX_X)) {
-                        ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartData.removeFirst();
+                        auto item = ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>();
+                        item.ChartData.removeFirst();
+                        ui->ObservedList->item(i)->setData(Qt::UserRole,QVariant::fromValue(item));
                     }
                     ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartSeries->clear();
                     double max = 0;
@@ -396,6 +406,33 @@ void Monitor::DeleteObserve() {
     delete ui->ObservedList->currentItem();
 }
 
+// 滤波器设置
+void Monitor::AddFilter() {
+    auto item = ui->ObservedList->currentItem()->data(Qt::UserRole).value<ChartItem>();
+    auto *dialog = new FilterDialog(this,item.ChartFilter,item.FilterDLL);
+    int rtn = dialog->exec();
+    if (rtn == QDialog::Accepted) {
+        item.ChartFilter = dialog->getFilterStart();
+        item.FilterDLL = dialog->getAddress();
+        if(item.ChartFilter){
+            QPixmap pix(":/filter.png");
+            ui->ObservedList->itemWidget(ui->ObservedList->currentItem())->findChild<QLabel *>("filter")->setPixmap(pix);
+            ui->ObservedList->itemWidget(ui->ObservedList->currentItem())->findChild<QLabel *>("filter")->setScaledContents(true);
+            item.FilterLibrary = new QLibrary(item.FilterDLL);
+            if(!item.FilterLibrary->load()){
+                qDebug() << "load library failed";
+                qDebug() << item.FilterLibrary->errorString();
+            }
+            item.filter_fir=(FunDef)item.FilterLibrary->resolve("filter_fir"); //解析DLL中的函数
+        }
+        else{
+            ui->ObservedList->itemWidget(ui->ObservedList->currentItem())->findChild<QLabel *>("filter")->clear();
+        }
+        ui->ObservedList->currentItem()->setData(Qt::UserRole,QVariant::fromValue(item));
+    }
+    delete dialog;
+}
+
 // 关于界面
 void Monitor::About() {
     QMessageBox::about(this, "About", "\nHangzhouDianziUniversity\nZZZCY");
@@ -534,42 +571,7 @@ void Monitor::GenerateShot() {
     QMessageBox::information(this, "Monitor", "截图已生成");
 }
 
-void Monitor::on_ObservedList_customContextMenuRequested(const QPoint &pos) {
-    QListWidgetItem *curItem = ui->ObservedList->itemAt(pos);
-    auto *checkBox = ui->ObservedList->itemWidget(curItem)->findChild<QCheckBox *>("checkBox");
-
-    qDebug() << checkBox->text();
-
-    auto *popMenu = new QMenu(this);
-    auto *deleteSeed = new QAction(tr("Delete"), this);
-    auto *clearSeeds = new QAction(tr("Clear"), this);
-    popMenu->addAction(deleteSeed);
-    popMenu->addAction(clearSeeds);
-    connect(deleteSeed, SIGNAL(triggered()), this, SLOT(deleteSeedSlot()));
-    popMenu->exec(QCursor::pos());
-    delete popMenu;
-    delete deleteSeed;
-    delete clearSeeds;
-}
-
-void Monitor::deleteSeedSlot() {
-    int ch = QMessageBox::warning(nullptr, "Warning",
-                                  "Are you sure to delete seed ?",
-                                  QMessageBox::Yes | QMessageBox::No,
-                                  QMessageBox::No);
-
-    if (ch != QMessageBox::Yes)
-        return;
-
-    QListWidgetItem *item = ui->ObservedList->currentItem();
-    if (item == nullptr)
-        return;
-
-    int curIndex = ui->ObservedList->row(item);
-    ui->ObservedList->takeItem(curIndex);
-    delete item;
-}
-
+// 观察者规则检查
 bool Monitor::RuleCheck_Name(const QString& name){
     for(int i=0;i<ui->ObservedList->count();i++) {
         if (ui->ObservedList->item(i)->data(Qt::UserRole).value<ChartItem>().ChartName == name) {
@@ -577,4 +579,31 @@ bool Monitor::RuleCheck_Name(const QString& name){
         }
     }
     return true;
+}
+
+double filter_fir(QList<double>& buffer, double data){
+    QList<double> B = {
+        0.01371888807641,  0.04088447702935, 0.002712877770901, -0.01457739134178,
+        0.006641859048837, -0.03012145345071, -0.05578417902593,  0.02234928048926,
+        0.05649875259341, 0.002500211803031,  0.04347509897176,  0.07327029467123,
+        -0.1332644738461,  -0.2454423190008,  0.07548126994108,   0.3403092785529,
+        0.07548126994108,  -0.2454423190008,  -0.1332644738461,  0.07327029467123,
+        0.04347509897176, 0.002500211803031,  0.05649875259341,  0.02234928048926,
+        -0.05578417902593, -0.03012145345071, 0.006641859048837, -0.01457739134178,
+        0.002712877770901,  0.04088447702935,  0.01371888807641
+    };
+
+    buffer.append(data);
+    if(buffer.size()<B.size()){
+        return 0;
+    }
+    while(buffer.size()>B.size()){
+        buffer.removeFirst();
+    }
+
+    double temp = 0;
+    for(int i=0;i<buffer.size();i++){
+        temp += buffer.at(i)*B.at(i);
+    }
+    return temp;
 }

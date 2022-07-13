@@ -75,6 +75,7 @@ public:
     QHBoxLayout *horizontalLayout_15;
     QToolButton *AddButton;
     QToolButton *DeleteButton;
+    QToolButton *FilterButton;
     QSpacerItem *horizontalSpacer;
     QChartView *Chart;
     QTextBrowser *RawData;
@@ -272,7 +273,6 @@ public:
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         ObservedList = new QListWidget(ObserverTab);
         ObservedList->setObjectName(QString::fromUtf8("ObservedList"));
-        ObservedList->setContextMenuPolicy(Qt::CustomContextMenu);
 
         verticalLayout_8->addWidget(ObservedList);
 
@@ -284,6 +284,7 @@ public:
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
         AddButton->setIcon(icon5);
+        AddButton->setIconSize(QSize(24, 24));
 
         horizontalLayout_15->addWidget(AddButton);
 
@@ -293,8 +294,19 @@ public:
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
         DeleteButton->setIcon(icon6);
+        DeleteButton->setIconSize(QSize(24, 24));
 
         horizontalLayout_15->addWidget(DeleteButton);
+
+        FilterButton = new QToolButton(ObserverTab);
+        FilterButton->setObjectName(QString::fromUtf8("FilterButton"));
+        FilterButton->setMinimumSize(QSize(32, 32));
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/filter.png"), QSize(), QIcon::Normal, QIcon::Off);
+        FilterButton->setIcon(icon7);
+        FilterButton->setIconSize(QSize(24, 24));
+
+        horizontalLayout_15->addWidget(FilterButton);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -330,7 +342,7 @@ public:
         Monitor->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Monitor);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1064, 32));
+        menubar->setGeometry(QRect(0, 0, 1064, 22));
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         menu_2 = new QMenu(menubar);
@@ -378,6 +390,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(SourceTab), QCoreApplication::translate("Monitor", "\346\225\260\346\215\256\346\272\220", nullptr));
         AddButton->setText(QString());
         DeleteButton->setText(QString());
+        FilterButton->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(ObserverTab), QCoreApplication::translate("Monitor", "\350\247\202\345\257\237", nullptr));
         menu->setTitle(QCoreApplication::translate("Monitor", "\346\226\207\344\273\266", nullptr));
         menu_2->setTitle(QCoreApplication::translate("Monitor", "\346\223\215\344\275\234", nullptr));

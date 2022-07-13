@@ -4,8 +4,11 @@
 
 ObserverItem::ObserverItem(QWidget *parent) : QWidget{parent} {
     checkBox->setObjectName("checkBox");
+    filterLabel->setObjectName("filter");
+    filterLabel->setFixedSize(16, 16);
     colorLabel->setFixedSize(10, 10);
     mainLayout->addWidget(checkBox);
+    mainLayout->addWidget(filterLabel);
     mainLayout->addWidget(colorLabel);
     setLayout(mainLayout);
 }

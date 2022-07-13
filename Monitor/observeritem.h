@@ -27,6 +27,7 @@ public:
 private:
     QString itemName;
     QHBoxLayout *mainLayout = new QHBoxLayout;
+    QLabel *filterLabel = new QLabel();
     QLabel *colorLabel = new QLabel();
 
     QString mStyle = QString("QLabel{background-color:blue;}");

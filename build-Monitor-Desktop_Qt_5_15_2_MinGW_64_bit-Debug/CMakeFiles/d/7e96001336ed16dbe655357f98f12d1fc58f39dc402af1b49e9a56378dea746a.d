@@ -1,6 +1,8 @@
 Monitor_autogen/timestamp: \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/CMakeLists.txt \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/Monitor_Resource.qrc \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.cpp \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.h \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/main.cpp \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.cpp \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.h \
@@ -100,6 +102,7 @@ Monitor_autogen/timestamp: \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonArray \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+  E:/Qt/5.15.2/mingw81_64/include/QtCore/QLibrary \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QList \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QMargins \
   E:/Qt/5.15.2/mingw81_64/include/QtCore/QMetaType \
@@ -1041,6 +1044,7 @@ Monitor_autogen/timestamp: \
   E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wow64apiset.h \
   E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wtypes.h \
   E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include/wtypesbase.h \
+  C:/Users/zuo-c/Desktop/Monitor/Monitor/filterdialog.ui \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/monitor.ui \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/observerdialog.ui \
   C:/Users/zuo-c/Desktop/Monitor/Monitor/settingsdialog.ui \

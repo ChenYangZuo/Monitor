@@ -259,9 +259,6 @@
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
              <widget class="QListWidget" name="ObservedList">
-              <property name="contextMenuPolicy">
-               <enum>Qt::CustomContextMenu</enum>
-              </property>
              </widget>
             </item>
             <item>
@@ -281,6 +278,12 @@
                  <iconset resource="Monitor_Resource.qrc">
                   <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
                 </property>
+                <property name="iconSize">
+                 <size>
+                  <width>24</width>
+                  <height>24</height>
+                 </size>
+                </property>
                </widget>
               </item>
               <item>
@@ -297,6 +300,35 @@
                 <property name="icon">
                  <iconset resource="Monitor_Resource.qrc">
                   <normaloff>:/delete.png</normaloff>:/delete.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>24</width>
+                  <height>24</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="FilterButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>32</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="Monitor_Resource.qrc">
+                  <normaloff>:/filter.png</normaloff>:/filter.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>24</width>
+                  <height>24</height>
+                 </size>
                 </property>
                </widget>
               </item>
@@ -337,7 +369,7 @@
      <x>0</x>
      <y>0</y>
      <width>1064</width>
-     <height>32</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
