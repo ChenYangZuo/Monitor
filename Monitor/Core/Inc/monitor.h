@@ -12,8 +12,6 @@
 #include <QSerialPort>
 #include <QUdpSocket>
 #include <QtCharts>
-//#include <QtCharts/QChartView>
-//#include <QtCharts/QSplineSeries>
 #include <QListWidget>
 #include <QJsonObject>
 #include <QJsonArray>

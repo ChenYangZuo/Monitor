@@ -1,0 +1,30 @@
+{
+	"BUILD_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/Monitor_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor",
+	"CMAKE_SOURCE_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor",
+	"INCLUDE_DIR" : "C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/Monitor_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/save.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/monitor.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/edit.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/filter.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/about.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/delete.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/shot.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/load.png",
+		"C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/settings.png"
+	],
+	"LOCK_FILE" : "C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/CMakeFiles/Monitor_autogen.dir/AutoRcc_Monitor_Resource_S5YYZ2ZCNV_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "Monitor_Resource" ],
+	"OUTPUT_CHECKSUM" : "S5YYZ2ZCNV",
+	"OUTPUT_NAME" : "qrc_Monitor_Resource.cpp",
+	"RCC_EXECUTABLE" : "E:/Qt/5.15.2/mingw81_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/zuo-c/Desktop/Monitor/Monitor/cmake-build-debug/CMakeFiles/Monitor_autogen.dir/AutoRcc_Monitor_Resource_S5YYZ2ZCNV_Used.txt",
+	"SOURCE" : "C:/Users/zuo-c/Desktop/Monitor/Monitor/Resources/Monitor_Resource.qrc",
+	"VERBOSITY" : 0
+}

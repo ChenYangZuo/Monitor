@@ -16,13 +16,15 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Network SerialPor
 find_package(Qt5Charts)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS Forms/)
-set(PROJECT_SOURCES
-        Core/Src/main.cpp Core/Src/monitor.cpp Core/Src/settingsdialog.cpp Core/Src/observeritem.cpp Core/Src/observerdialog.cpp Core/Src/filterdialog.cpp
-        Core/Inc/monitor.h Core/Inc/settingsdialog.h Core/Inc/observeritem.h Core/Inc/observerdialog.h Core/Inc/filterdialog.h
-        Forms/monitor.ui Forms/settingsdialog.ui Forms/observerdialog.ui Forms/filterdialog.ui
-        Resources/Monitor_Resource.qrc Resources/ICON.rc)
 
-include_directories(ore/Src Core/Inc)
+set(PROJECT_SOURCES
+    Core/Src/main.cpp Core/Src/monitor.cpp Core/Src/settingsdialog.cpp Core/Src/observeritem.cpp Core/Src/observerdialog.cpp Core/Src/filterdialog.cpp
+    Core/Inc/monitor.h Core/Inc/settingsdialog.h Core/Inc/observeritem.h Core/Inc/observerdialog.h Core/Inc/filterdialog.h
+    Forms/monitor.ui Forms/settingsdialog.ui Forms/observerdialog.ui Forms/filterdialog.ui
+    Resources/Monitor_Resource.qrc Resources/ICON.rc
+)
+
+include_directories(Core/Src Core/Inc)
 
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Monitor

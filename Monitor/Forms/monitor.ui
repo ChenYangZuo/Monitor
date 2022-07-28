@@ -34,7 +34,7 @@
            </size>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="SourceTab">
            <attribute name="title">
@@ -258,8 +258,7 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
-             <widget class="QListWidget" name="ObservedList">
-             </widget>
+             <widget class="QListWidget" name="ObservedList"/>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -275,7 +274,7 @@
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="Monitor_Resource.qrc">
+                 <iconset resource="../Resources/Monitor_Resource.qrc">
                   <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
                 </property>
                 <property name="iconSize">
@@ -298,7 +297,7 @@
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="Monitor_Resource.qrc">
+                 <iconset resource="../Resources/Monitor_Resource.qrc">
                   <normaloff>:/delete.png</normaloff>:/delete.png</iconset>
                 </property>
                 <property name="iconSize">
@@ -321,7 +320,7 @@
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="Monitor_Resource.qrc">
+                 <iconset resource="../Resources/Monitor_Resource.qrc">
                   <normaloff>:/filter.png</normaloff>:/filter.png</iconset>
                 </property>
                 <property name="iconSize">
@@ -403,7 +402,7 @@
   </widget>
   <action name="DataIn">
    <property name="icon">
-    <iconset resource="Monitor_Resource.qrc">
+    <iconset resource="../Resources/Monitor_Resource.qrc">
      <normaloff>:/load.png</normaloff>:/load.png</iconset>
    </property>
    <property name="text">
@@ -415,7 +414,7 @@
   </action>
   <action name="DataOut">
    <property name="icon">
-    <iconset resource="Monitor_Resource.qrc">
+    <iconset resource="../Resources/Monitor_Resource.qrc">
      <normaloff>:/save.png</normaloff>:/save.png</iconset>
    </property>
    <property name="text">
@@ -427,7 +426,7 @@
   </action>
   <action name="AboutMenu">
    <property name="icon">
-    <iconset resource="Monitor_Resource.qrc">
+    <iconset resource="../Resources/Monitor_Resource.qrc">
      <normaloff>:/about.png</normaloff>:/about.png</iconset>
    </property>
    <property name="text">
@@ -439,7 +438,7 @@
   </action>
   <action name="GenerateShot">
    <property name="icon">
-    <iconset resource="Monitor_Resource.qrc">
+    <iconset resource="../Resources/Monitor_Resource.qrc">
      <normaloff>:/shot.png</normaloff>:/shot.png</iconset>
    </property>
    <property name="text">
@@ -451,7 +450,7 @@
   </action>
   <action name="ChartSettings">
    <property name="icon">
-    <iconset resource="Monitor_Resource.qrc">
+    <iconset resource="../Resources/Monitor_Resource.qrc">
      <normaloff>:/settings.png</normaloff>:/settings.png</iconset>
    </property>
    <property name="text">
@@ -466,11 +465,11 @@
   <customwidget>
    <class>QChartView</class>
    <extends>QGraphicsView</extends>
-   <header>QtCharts.h</header>
+   <header>QtCharts</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="Monitor_Resource.qrc"/>
+  <include location="../Resources/Monitor_Resource.qrc"/>
  </resources>
  <connections/>
 </ui>
